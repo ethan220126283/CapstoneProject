@@ -1,5 +1,10 @@
 package za.ac.cput.domain;
 
+/*   Name:       Ethan Christopher Swart
+ *   Student#:   220126283
+ *   Date:       22/09/2022
+ */
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
