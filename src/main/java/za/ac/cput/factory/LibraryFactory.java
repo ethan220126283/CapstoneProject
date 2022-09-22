@@ -6,18 +6,18 @@ import za.ac.cput.util.Helper;
 public class LibraryFactory {
     
     //Factory Method
-    public static Library createLibrary(int library_Id, String library_Name, String library_Address, String library_Tel) {
+    public static Library createLibrary(int id, String name, String address, String tel) {
        
-        if (Helper.isZero(library_Id) || Helper.isNullorEmpty(library_Name)){
-            throw new IllegalArgumentException("library_Id and library_Name mandatory attributes.");
+        if (Helper.isZero(id) || Helper.isNullorEmpty(name)){
+            throw new IllegalArgumentException("id and name mandatory attributes.");
         }
 
         //Return
         return new Library.Builder()
-        .theirLibrary_Id(library_Id)
-        .theirLibrary_Name(library_Name)
-        .theirLibrary_Address(library_Address)
-        .theirLibrary_Tel(library_Tel)
+        .theirId(id)
+        .theirName(name)
+        .theirAddress(address)
+        .theirTel(tel)
         .build();
     }
 }

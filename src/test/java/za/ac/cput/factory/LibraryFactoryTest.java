@@ -29,7 +29,7 @@ public class LibraryFactoryTest {
             System.out.println(library.toString());
         }, "IllegalArgumentException was expected");
 
-        assertEquals("library_Id and library_Name mandatory attributes.",thrown.getMessage());
+        assertEquals("id and name mandatory attributes.",thrown.getMessage());
     }
 
     @Test

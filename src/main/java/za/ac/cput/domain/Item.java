@@ -1,82 +1,108 @@
 package za.ac.cput.domain;
 
-public class Item {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
+
+@Entity
+public class Item implements Serializable {
 
     //Class Attributes
-    private String item_Id;
-    private String item_Name;
-    private String item_Author;
-    private String item_Genre;
-    private String item_Status;
+    @Id
+    @Column (name = "item_id")
+    private String id;
+    private String name;
+    private String author;
+    private String genre;
+    private String status;
 
     //Private constructor
-    private Item() {}
+    protected Item() {}
+
+    private Item(Builder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.author = builder.author;
+        this.genre = builder.genre;
+        this.status = builder.status;
+    }
 
     //Builder Class
     public class Builder {
 
         //Builder Attributes
-        private String item_Id;
-        private String item_Name;
-        private String item_Author;
-        private String item_Genre;
-        private String item_Status;
+        private String id;
+        private String name;
+        private String author;
+        private String genre;
+        private String status;
 
         //Builder constructor
         private Builder () {}
 
         //Builder returns
-        public Builder theirItem_ID (String item_Id) {
-            this.item_Id = item_Id;
+        public Builder theirID (String id) {
+            this.id = id;
             return this;
         }
 
-        public Builder theirItem_Name (String item_Name) {
-            this.item_Name = item_Name;
+        public Builder theirName (String name) {
+            this.name = name;
             return this;
         }
 
-        public Builder theirItem_Author (String item_Author) {
-            this.item_Author = item_Author;
+        public Builder theirAuthor (String author) {
+            this.author = author;
             return this;
         }
 
-        public Builder theirItem_Genre (String item_Genre) {
-            this.item_Genre = item_Genre;
+        public Builder theirGenre (String genre) {
+            this.genre = genre;
             return this;
         }
 
         //Builder method
         public Item build() {
             Item item = new Item();
-            item.item_Id = this.item_Id;
-            item.item_Name = this.item_Name;
-            item.item_Author = this.item_Author;
-            item.item_Genre = this.item_Genre;
-            item.item_Status = this.item_Status;
+            item.id = this.id;
+            item.name = this.name;
+            item.author = this.author;
+            item.genre = this.genre;
+            item.status = this.status;
             return item;
         }
     }
 
     //Getters
     public String getItem_Id() {
-        return item_Id;
+        return id;
     }
 
     public String getItem_Name() {
-        return item_Name;
+        return name;
     }
 
     public String getItem_Author() {
-        return item_Author;
+        return author;
     }
 
     public String getItem_Genre() {
-        return item_Genre;
+        return genre;
     }
 
     public String getItem_Status() {
-        return item_Status;
+        return status;
     }
 
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", author='" + author + '\'' +
+                ", genre='" + genre + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

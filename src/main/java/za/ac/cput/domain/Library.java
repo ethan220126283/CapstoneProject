@@ -1,74 +1,89 @@
 package za.ac.cput.domain;
 
-public class Library {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import java.io.Serializable;
+
+@Entity
+public class Library implements Serializable {
     
     //Class Attributes
-    private int library_Id;
-    private String library_Name;
-    private String library_Address;
-    private String library_Tel;
+    @Id
+    @Column(name = "library_id")
+    private int id;
+    private String name;
+    private String address;
+    private String tel;
 
     //Private Constructor for Library
-    private Library() {}
+    protected Library() {}
+
+    private Library(Builder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.address = builder.address;
+        this.tel = builder.tel;
+    }
 
     public static class Builder {
 
         //Builder Attributes
-        private int library_Id;
-        private String library_Name;
-        private String library_Address;
-        private String library_Tel;
+        private int id;
+        private String name;
+        private String address;
+        private String tel;
 
         //Builder Constructor
         public Builder() {}
 
         //Builder Returns
-        public Builder theirLibrary_Id(int library_Id) {
-            this.library_Id = library_Id;
+        public Builder theirId(int id) {
+            this.id = id;
             return this;
         }
 
-        public Builder theirLibrary_Name(String library_Name) {
-            this.library_Name = library_Name;
+        public Builder theirName(String name) {
+            this.name = name;
             return this;
         }
 
-        public Builder theirLibrary_Address(String library_Address) {
-            this.library_Address = library_Address;
+        public Builder theirAddress(String address) {
+            this.address = address;
             return this;
         }
 
-        public Builder theirLibrary_Tel(String library_Tel) {
-            this.library_Tel = library_Tel;
+        public Builder theirTel(String tel) {
+            this.tel = tel;
             return this;
         }
 
         //Build Method
         public Library build() {
             Library library = new Library();
-            library.library_Id = this.library_Id;
-            library.library_Name = this.library_Name;
-            library.library_Address = this.library_Address;
-            library.library_Tel = this.library_Tel;
+            library.id = this.id;
+            library.name = this.name;
+            library.address = this.address;
+            library.tel = this.tel;
             return library;
         }
     }
 
     //Getters
     public int getLibrary_Id() {
-        return library_Id;
+        return id;
     }
 
     public String getLibrary_Name() {
-        return library_Name;
+        return name;
     }
 
     public String getLibrary_Address() {
-        return library_Address;
+        return address;
     }
 
     public String getLibrary_Tel() {
-        return library_Tel;
+        return tel;
     }
 
     //toString Method
@@ -76,9 +91,9 @@ public class Library {
     public String toString() {
         return 
         "Library: library_Id: " +
-        library_Id + ", library_Name: " +
-        library_Name + ", library_Address: " +
-        library_Address + ", library_Tel: " +
-        library_Tel;
+        id + ", library_Name: " +
+        name + ", library_Address: " +
+        address + ", library_Tel: " +
+        tel;
     }
 }
