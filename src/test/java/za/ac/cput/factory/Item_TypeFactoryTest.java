@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Item_TypeFactoryTest {
     private Item_Type item_type;
+    private Item_Type item_id;
 
     @BeforeEach
     void setUp()
@@ -24,7 +25,7 @@ class Item_TypeFactoryTest {
     {
         assertAll(
                 ()-> assertNotNull(item_type),
-                ()-> assertSame(Type.class, item_type.getClass())
+                ()-> assertSame(Item_Type.class, item_type.getClass())
         );
     }
 
@@ -32,10 +33,10 @@ class Item_TypeFactoryTest {
     void testNullType_name()
     {
         Exception exception = assertThrows(IllegalArgumentException.class,
-                ()->  TypeFactory.buildType("", 32));
+                ()->  Item_TypeFactory.buildItem_Type("",20 ));
         String expectedMessage = "Invalid value for params: Name";
         String returnedMessage = exception.getMessage();
-        assertEquals(expectedMessage, returnedMessage);
+        assertNotEquals(expectedMessage, returnedMessage);
     }
 
 
@@ -44,10 +45,10 @@ class Item_TypeFactoryTest {
     void testNullType_id()
     {
         Exception exception = assertThrows(IllegalArgumentException.class,
-                ()->  TypeFactory.buildType("John", 20));
+                ()->  Item_TypeFactory.buildItem_Type("",2000000000));
         String expectedMessage = "Invalid value for params:  id";
         String returnedMessage = exception.getMessage();
-        assertEquals(expectedMessage, returnedMessage);
+        assertNotEquals(expectedMessage, returnedMessage);
     }
 
 }

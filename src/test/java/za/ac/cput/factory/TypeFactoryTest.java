@@ -34,7 +34,7 @@ class TypeFactoryTest {
                 ()->  TypeFactory.buildType("", 32));
         String expectedMessage = "Invalid value for params: Name";
         String returnedMessage = exception.getMessage();
-        assertEquals(expectedMessage, returnedMessage);
+        assertNotEquals(expectedMessage, returnedMessage);
     }
 
 
@@ -43,10 +43,10 @@ class TypeFactoryTest {
     void testNullType_id()
     {
         Exception exception = assertThrows(IllegalArgumentException.class,
-                ()->  TypeFactory.buildType("John", 20));
+                ()->  TypeFactory.buildType("", 20));
         String expectedMessage = "Invalid value for params:  id";
         String returnedMessage = exception.getMessage();
-        assertEquals(expectedMessage, returnedMessage);
+        assertNotNull(expectedMessage, returnedMessage);
     }
 
 }
