@@ -34,7 +34,7 @@ public class Item implements Serializable {
     }
 
     //Builder Class
-    public class Builder {
+    public static class Builder {
 
         //Builder Attributes
         private String id;
@@ -44,7 +44,7 @@ public class Item implements Serializable {
         private String status;
 
         //Builder constructor
-        private Builder () {}
+        public Builder () {}
 
         //Builder returns
         public Builder theirID (String id) {
@@ -64,6 +64,11 @@ public class Item implements Serializable {
 
         public Builder theirGenre (String genre) {
             this.genre = genre;
+            return this;
+        }
+
+        public Builder theirStatus (String status) {
+            this.status = status;
             return this;
         }
 
