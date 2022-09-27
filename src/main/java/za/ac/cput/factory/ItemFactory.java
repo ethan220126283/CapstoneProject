@@ -3,6 +3,11 @@ package za.ac.cput.factory;
 import za.ac.cput.domain.Item;
 import za.ac.cput.util.Helper;
 
+/*   Name:       Ethan Christopher Swart
+ *   Student#:   220126283
+ *   Date:       27/09/2022
+ */
+
 public class ItemFactory {
 
     //Factory method
