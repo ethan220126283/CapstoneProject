@@ -1,7 +1,8 @@
 package za.ac.cput.domain;
-import com.sun.istack.NotNull;
+//import com.sun.istack.NotNull;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Objects;
 
@@ -12,10 +13,11 @@ import java.util.Objects;
 
 @Entity
 public class Item_Type {
-    @NotNull
+    //@NotNull
     @Id
+    @GeneratedValue
     private int type_id;
-    @Embedded
+    //@Embedded
     private String item_id;
 
     protected Item_Type(){

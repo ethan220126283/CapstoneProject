@@ -9,7 +9,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Item;
 
+import java.util.List;
+
 @Repository
 public interface ItemRepository extends JpaRepository<Item, String> {
-    public Item findByName(String name);
+    //public List<Item> findByName(String name);
 }
