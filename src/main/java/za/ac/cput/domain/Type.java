@@ -1,5 +1,5 @@
 package za.ac.cput.domain;
-import com.sun.istack.NotNull;
+//import com.sun.istack.NotNull;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
@@ -9,10 +9,10 @@ import java.util.Objects;
  */
 @Entity
 public class Type implements Serializable {
-    @NotNull
+    //@NotNull
     @Id
     private int type_id;
-    @NotNull
+    //@NotNull
     @Column(unique = true)
     @Embedded
     private String type_name;

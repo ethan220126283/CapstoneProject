@@ -4,7 +4,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import za.ac.cput.domain.Librarian;
 
- @Repository
+import java.util.List;
+
+@Repository
     public interface LibrarianRepository extends JpaRepository<Librarian, String> {
-        public Librarian findByName(String name);
+        //public List<Librarian> findByName(String name);
     }

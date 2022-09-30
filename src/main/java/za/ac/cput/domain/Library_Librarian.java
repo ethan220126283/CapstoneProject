@@ -3,6 +3,7 @@ package za.ac.cput.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.io.Serializable;
 
@@ -11,7 +12,8 @@ public class Library_Librarian implements Serializable {
 
     //Class Attributes
     @Id
-    @Column(name = "librarylibrarian_id")
+    @GeneratedValue
+    //@Column(name = "librarylibrarian_id")
     private int library_id;
     private int librarian_id;
 
