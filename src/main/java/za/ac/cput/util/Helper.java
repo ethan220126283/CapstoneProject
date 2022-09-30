@@ -2,6 +2,10 @@ package za.ac.cput.util;
 
 import org.apache.commons.validator.routines.EmailValidator;
 
+import java.text.Format;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class Helper {
     
     //Check for null or empty String field
@@ -50,5 +54,13 @@ public class Helper {
 
     private static boolean isValidRange(int value, int begin, int end) {
         return value > begin && value < end;
+    }
+
+    //Returns current date and time
+    public static String[] getDateAndTimeSeparate(Date date) {
+        date = new Date();
+        Format dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String dateTime = dateFormat.format(date);
+        return dateTime.split(" ");
     }
 }
