@@ -6,9 +6,9 @@ import za.ac.cput.util.Helper;
 public class LibraryFactory {
     
     //Factory Method
-    public static Library createLibrary(int id, String name, String address, String tel) {
+    public static Library createLibrary(String id, String name, String address, String tel) {
        
-        if (Helper.isZero(id) || Helper.isNullorEmpty(name)){
+        if (Helper.isNullorEmpty(id) || Helper.isNullorEmpty(name)){
             throw new IllegalArgumentException("id and name mandatory attributes.");
         }
 

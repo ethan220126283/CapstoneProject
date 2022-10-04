@@ -1,4 +1,4 @@
-package za.ac.cput.main;
+package za.ac.cput.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

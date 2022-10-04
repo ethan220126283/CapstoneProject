@@ -14,9 +14,9 @@ public class Library implements Serializable {
     
     //Class Attributes
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    //@GeneratedValue (strategy = GenerationType.AUTO)
     //@Column(name = "id", nullable = false)
-    private int id;
+    private String id;
     private String name;
     private String address;
     private String tel;
@@ -34,7 +34,7 @@ public class Library implements Serializable {
     public static class Builder {
 
         //Builder Attributes
-        private int id;
+        private String id;
         private String name;
         private String address;
         private String tel;
@@ -43,7 +43,7 @@ public class Library implements Serializable {
         public Builder() {}
 
         //Builder Returns
-        public Builder theirId(int id) {
+        public Builder theirId(String id) {
             this.id = id;
             return this;
         }
@@ -75,7 +75,7 @@ public class Library implements Serializable {
     }
 
     //Getters
-    public int getLibrary_Id() {
+    public String getLibrary_Id() {
         return id;
     }
 

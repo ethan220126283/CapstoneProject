@@ -17,7 +17,7 @@ public class LibraryFactoryTest {
     @Test
     public void testCreateLibrary() {
         Library library = LibraryFactory.createLibrary(
-            1, 
+            "1",
             "James Maxwell Library", 
             "123 Brown Street", 
             "072 123 4567"
@@ -30,7 +30,7 @@ public class LibraryFactoryTest {
     public void testCreateLibraryWithNullValues() {
         IllegalArgumentException thrown = Assertions
         .assertThrows(IllegalArgumentException.class, () -> {
-            Library library = LibraryFactory.createLibrary(0,null,null,null);
+            Library library = LibraryFactory.createLibrary("",null,null,null);
             System.out.println(library.toString());
         }, "IllegalArgumentException was expected");
 
@@ -40,7 +40,7 @@ public class LibraryFactoryTest {
     @Test
     public void testCreateLibraryWithoutOptionalValues() {
         Library library = LibraryFactory.createLibrary(
-            1, 
+            "1",
             "James Maxwell Library", 
             null,
             null
