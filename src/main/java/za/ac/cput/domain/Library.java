@@ -5,19 +5,17 @@ package za.ac.cput.domain;
  *   Date:       22/09/2022
  */
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
+//@Table(name = "library")
 public class Library implements Serializable {
     
     //Class Attributes
     @Id
-    @GeneratedValue
-    //@Column(name = "library_id")
+    @GeneratedValue (strategy = GenerationType.AUTO)
+    //@Column(name = "id", nullable = false)
     private int id;
     private String name;
     private String address;
