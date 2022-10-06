@@ -5,84 +5,83 @@ package za.ac.cput.library_management.domain;
  *   Date:       30/09/2022
  */
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.io.Serializable;
-import java.util.Objects;
+
+import javax.persistence.*;
 
 @Entity
-public class Library_Type implements Serializable {
-
-    //Attributes
+@Table(name = "library_type")
+public class Library_Type {
     @Id
-    private int library_id;
-    @Id
-    private int type_id;
+    @Column(name = "library_type_id", nullable = false)
+    private String id;
 
-    //Protected constructor for Library_Type
+    @ManyToOne
+    @JoinColumn(name = "library_id")
+    private Library library;
+
+    @ManyToOne
+    @JoinColumn(name = "type_id")
+    private Type type;
+
     protected Library_Type() {}
 
     private Library_Type(Builder builder) {
-        this.library_id = builder.library_id;
-        this.type_id = builder.type_id;
+        this.id = builder.id;
+        this.library = builder.library;
+        this.type = builder.type;
     }
 
     //Builder class
     public static class Builder {
         //Builder attributes
-        private int library_id;
-        private int type_id;
+        private String id;
+        private Library library;
+        private Type type;
 
         //Constructor for Builder constructor
         public Builder() {}
 
         //Builder returns
-        public Builder theirLibrary_Id(int library_id) {
-            this.library_id = library_id;
+        public Builder theirId(String id) {
+            this.id = id;
             return this;
         }
 
-        public Builder theirType_Id(int type_id) {
-            this.type_id = type_id;
+        public Builder theirLibrary(Library library) {
+            this.library = library;
+            return this;
+        }
+
+        public Builder theirType(Type type) {
+            this.type = type;
             return this;
         }
 
         //Build method
         public Library_Type build() {
             Library_Type library_type = new Library_Type();
-            library_type.library_id = this.library_id;
-            library_type.type_id = this.type_id;
+            library_type.id = this.id;
+            library_type.library = this.library;
+            library_type.type = this.type;
             return library_type;
         }
     }
 
     //Getters
-    public int getLibrary_id() {return library_id;}
 
-    public int getType_id() {return type_id;}
+    public String getId() {return id;}
 
-    //toString
+    public Library getLibrary() {return library;}
+
+    public Type getType() {return type;}
+
+    //toString method
     @Override
     public String toString() {
         return "Library_Type{" +
-                "library_id=" + library_id +
-                ", type_id=" + type_id +
+                "id='" + id + '\'' +
+                ", library=" + library +
+                ", type=" + type +
                 '}';
     }
-
-    //equals method
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Library_Type that = (Library_Type) o;
-        return library_id == that.library_id && type_id == that.type_id;
-    }
-
-    //hashCode method
-    @Override
-    public int hashCode() {
-        return Objects.hash(library_id, type_id);
-    }
-
 }

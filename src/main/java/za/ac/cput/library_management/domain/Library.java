@@ -5,20 +5,25 @@ package za.ac.cput.library_management.domain;
  *   Date:       22/09/2022
  */
 
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-//@Table(name = "library")
-public class Library implements Serializable {
-    
-    //Class Attributes
+@Table(name = "library")
+public class Library {
     @Id
-    //@GeneratedValue (strategy = GenerationType.AUTO)
-    //@Column(name = "id", nullable = false)
+    @Column(name = "library_id", nullable = false)
     private String id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "address")
     private String address;
+
+    @Column(name = "tel")
     private String tel;
 
     //Private Constructor for Library
@@ -75,30 +80,30 @@ public class Library implements Serializable {
     }
 
     //Getters
-    public String getLibrary_Id() {
+    public String getId() {
         return id;
     }
 
-    public String getLibrary_Name() {
+    public String getName() {
         return name;
     }
 
-    public String getLibrary_Address() {
+    public String getAddress() {
         return address;
     }
 
-    public String getLibrary_Tel() {
+    public String getTel() {
         return tel;
     }
 
     //toString Method
     @Override
     public String toString() {
-        return 
-        "Library: library_Id: " +
-        id + ", library_Name: " +
-        name + ", library_Address: " +
-        address + ", library_Tel: " +
-        tel;
+        return
+                "Library: library_Id: " +
+                        id + ", library_Name: " +
+                        name + ", library_Address: " +
+                        address + ", library_Tel: " +
+                        tel;
     }
 }

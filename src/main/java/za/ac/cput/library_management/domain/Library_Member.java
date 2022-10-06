@@ -1,72 +1,85 @@
 package za.ac.cput.library_management.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.*;
 
 @Entity
-public class Library_Member implements Serializable{
-
+@Table(name = "library_member")
+public class Library_Member {
     @Id
-    @GeneratedValue
-    private int library_id;
-    //Columb (name = "library_Member")
-    private int member_id;
+    @Column(name = "library_member_id", nullable = false)
+    private String id;
+
+    @ManyToOne
+    @JoinColumn(name = "library_id")
+    private Library library;
+
+    @ManyToOne
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     protected Library_Member(){}
 
-
-
     private Library_Member(Builder builder) {
 
-
-        this.library_id = builder.library_id;
-        this.member_id = builder.member_id;
-        }
-
-
-        public static class Builder{
-
-            private int library_id;
-            private int member_id;
+        this.id = builder.id;
+        this.library = builder.library;
+        this.member = builder.member;
+    }
 
 
-        public Builder(){}
+    public static class Builder {
 
+        private String id;
+        private Library library;
+        private Member member;
 
-        public Builder setLibrary_id(int library_id) {
-            this.library_id = library_id;
+        public Builder() {}
+
+        public Builder setId(String id) {
+            this.id = id;
             return this;
         }
 
-            public Builder setMember_id(int member_id) {
-                this.member_id = member_id;
-                return this;
-            }
-
-            public Library_Member build(){
-            Library_Member library_member = new Library_Member();
-            library_member.library_id = this.library_id;
-            library_member.member_id = this.member_id;
-            return library_member;
+        public Builder setLibrary(Library library) {
+            this.library = library;
+            return this;
         }
 
+        public Builder setMember(Member member) {
+            this.member = member;
+            return this;
+        }
+
+        public Library_Member build(){
+            Library_Member library_member = new Library_Member();
+            library_member.id = this.id;
+            library_member.library = this.library;
+            library_member.member = this.member;
+            return library_member;
+        }
     }
 
-    public int getLibrary_id() {
-        return library_id;
+    //Getters
+
+    public String getId() {
+        return id;
     }
 
-    public int getMember_id() {
-        return member_id;
+    public Library getLibrary() {
+        return library;
     }
 
+    public Member getMember() {
+        return member;
+    }
+
+    //toString
     @Override
     public String toString() {
         return "Library_Member{" +
-                "library_id=" + library_id +
-                ", member_id=" + member_id +
+                "id='" + id + '\'' +
+                ", library=" + library +
+                ", member=" + member +
                 '}';
     }
 }

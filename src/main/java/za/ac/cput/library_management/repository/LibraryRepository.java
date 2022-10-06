@@ -11,5 +11,4 @@ import za.ac.cput.library_management.domain.Library;
 
 @Repository
 public interface LibraryRepository extends JpaRepository<Library, String> {
-    //public List<Library> findByName(String name);
 }

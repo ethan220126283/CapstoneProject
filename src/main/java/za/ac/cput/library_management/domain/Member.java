@@ -1,112 +1,123 @@
 package za.ac.cput.library_management.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.io.Serializable;
+/*   Name:       Adrian Bennett
+ *   Student#:   214075982
+ */
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-public class Member implements Serializable {
-
+@Table(name = "member")
+public class Member {
     @Id
-    @GeneratedValue
-    private int member_id;
+    @Column(name = "member_id", nullable = false)
+    private String id;
 
-    private String member_name;
-    private String member_address;
-    private String member_tel;
-    private String member_status;
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "tel")
+    private String tel;
+
+    @Column(name = "status")
+    private String status;
 
     protected Member(){}
 
-    private Member(Member.Builder builder){
-        this.member_id = builder.member_id;
-        this.member_name = builder.member_name;
-        this.member_address = builder.member_address;
-        this.member_tel = builder.member_tel;
-        this.member_status = builder.member_status;
+    private Member(Builder builder){
+        this.id = builder.id;
+        this.name = builder.name;
+        this.address = builder.address;
+        this.tel = builder.tel;
+        this.status = builder.status;
 
     }
 
 
     public static class Builder{
 
-        private int member_id;
-        private String member_name;
-        private String member_address;
-        private String member_tel;
-        private String member_status;
+        private String id;
+        private String name;
+        private String address;
+        private String tel;
+        private String status;
 
         public Builder(){}
 
-        public Builder setMember_id(int member_id) {
-            this.member_id = member_id;
+        public Builder setId(String id) {
+            this.id = id;
             return this;
         }
 
-        public Builder setMember_name(String member_name) {
-            this.member_name = member_name;
+        public Builder setName(String name) {
+            this.name = name;
             return this;
         }
 
-        public Builder setMember_address(String member_address) {
-            this.member_address = member_address;
+        public Builder setAddress(String address) {
+            this.address = address;
             return this;
         }
 
-        public Builder setMember_tel(String member_tel) {
-            this.member_tel = member_tel;
+        public Builder setTel(String tel) {
+            this.tel = tel;
             return this;
         }
 
-        public Builder setMember_status(String member_status) {
-            this.member_status = member_status;
+        public Builder setStatus(String status) {
+            this.status = status;
             return this;
         }
 
         public Member build(){
             Member member = new Member();
-            member.member_id = this.member_id;
-            member.member_name = this.member_name;
-            member.member_address = this.member_address;
-            member.member_tel = this.member_tel;
-            member.member_status = this.member_status;
+            member.id = this.id;
+            member.name = this.name;
+            member.address = this.address;
+            member.tel = this.tel;
+            member.status = this.status;
             return member;
         }
 
     }
 
 
-    public int getMember_id() {
-        return member_id;
+    public String getId() {
+        return id;
     }
 
-    public String getMember_name() {
-        return member_name;
+    public String getName() {
+        return name;
     }
 
 
-    public String getMember_address() {
-        return member_address;
+    public String getAddress() {
+        return address;
     }
 
-    public String getMember_tel() {
-        return member_tel;
+    public String getTel() {
+        return tel;
     }
 
-    public String getMember_status() {
-        return member_status;
+    public String getStatus() {
+        return status;
     }
 
     @Override
     public String toString() {
         return "Member{" +
-                "member_id=" + member_id +
-                ", member_name='" + member_name + '\'' +
-                ", member_address='" + member_address + '\'' +
-                ", member_tel='" + member_tel + '\'' +
-                ", member_status='" + member_status + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", tel='" + tel + '\'' +
+                ", status='" + status + '\'' +
                 '}';
     }
+
 }

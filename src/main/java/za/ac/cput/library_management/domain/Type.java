@@ -1,79 +1,84 @@
 package za.ac.cput.library_management.domain;
-//import com.sun.istack.NotNull;
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Objects;
+
 /*   Name:       Darryll Merkeur
  *   Student#:   220253595
  *   Date:       21/09/2022
  */
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import java.util.Objects;
+
 @Entity
-public class Type implements Serializable {
-    //@NotNull
+@Table(name = "type")
+public class Type {
     @Id
-    private int type_id;
-    //@NotNull
-    @Column(unique = true)
-    @Embedded
-    private String type_name;
+    @Column(name = "type_id", nullable = false)
+    private String id;
 
-    protected Type(){
+    @Column(name = "name")
+    private String name;
 
-    }
+    protected Type(){}
+
     private Type(Builder builder){
-        this.type_id = builder.type_id;
-        this.type_name = builder.type_name;
+        this.id = builder.id;
+        this.name = builder.name;
     }
 
-    public int getType_id() {
-        return type_id;
+    public String getId() {
+        return id;
     }
 
-    public String getType_name() {
-        return type_name;
+    public String getName() {
+        return name;
     }
 
     @Override
     public String toString() {
         return "Type{" +
-                "type_id=" + type_id +
-                ", type_name='" + type_name + '\'' +
+                "type_id=" + id +
+                ", type_name='" + name + '\'' +
                 '}';
     }
 
     public static class Builder{
-        private int type_id;
-        private String type_name;
+        private String id;
+        private String name;
 
-        public Builder setType_id(int type_id) {
-            this.type_id = type_id;
+        public Builder setId(String id) {
+            this.id = id;
             return this;
         }
 
-        public Builder setType_name(String type_name) {
-            this.type_name = type_name;
+        public Builder setName(String name) {
+            this.name = name;
             return this;
         }
         public Builder copy(Type type){
-            this.type_id = type.getType_id();
-            this.type_name = type.getType_name();
+            this.id = type.getId();
+            this.name = type.getName();
             return this;
         }
         public Type build(){
             return new Type(this);
         }
     }
+
     @Override
     public boolean equals(Object o)
     {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Type type = (Type) o;
-        return type.equals(type.type_id)&&type_name.equals(type.type_name);
+        return type.equals(type.id)&&name.equals(type.name);
     }
     @Override
     public int hashCode()
     {
-        return Objects.hash(type_id,type_name);
+        return Objects.hash(id,name);
     }
+
 }

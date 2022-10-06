@@ -5,6 +5,5 @@ import org.springframework.stereotype.Repository;
 import za.ac.cput.library_management.domain.Librarian;
 
 @Repository
-    public interface LibrarianRepository extends JpaRepository<Librarian, String> {
-        //public List<Librarian> findByName(String name);
-    }
+public interface LibrarianRepository extends JpaRepository<Librarian, String> {
+}

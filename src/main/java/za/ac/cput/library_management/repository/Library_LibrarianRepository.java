@@ -5,6 +5,5 @@ import org.springframework.stereotype.Repository;
 import za.ac.cput.library_management.domain.Library_Librarian;
 
 @Repository
-public interface Library_LibrarianRepository extends JpaRepository<Library_Librarian, Integer> {
-    //public List<Library_Librarian> findByID(int id);
+public interface Library_LibrarianRepository extends JpaRepository<Library_Librarian, String> {
 }

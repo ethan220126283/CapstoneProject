@@ -1,82 +1,80 @@
 package za.ac.cput.library_management.domain;
-//import com.sun.istack.NotNull;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.util.Objects;
 
 /*   Name:       Darryll Merkeur
  *   Student#:   220253595
  *   Date:       21/09/2022
  */
 
+
+import javax.persistence.*;
+
 @Entity
+@Table(name = "item_type")
 public class Item_Type {
-    //@NotNull
     @Id
-    @GeneratedValue
-    private int type_id;
-    //@Embedded
-    private String item_id;
+    @Column(name = "item_type_id", nullable = false)
+    private String id;
 
-    protected Item_Type(){
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item item;
 
-    }
+    @ManyToOne
+    @JoinColumn(name = "type_type_id")
+    private Type type;
+
+    protected Item_Type(){}
+
     private Item_Type(Builder builder){
-        this.type_id = builder.type_id;
-        this.item_id = builder.item_id;
+        this.id = builder.id;
+        this.item = builder.item;
+        this.type = builder.type;
     }
 
-    public int getType_id() {
-        return type_id;
-    }
+    public String getId() {return id;}
 
-    public String getItem_id() {
-        return item_id;
-    }
+    public Type getType() {return type;}
+
+    public Item getItem() {return item;}
 
     @Override
     public String toString() {
         return "Item_Type{" +
-                "type_id=" + type_id +
-                ", item_id='" + item_id + '\'' +
+                "id='" + id + '\'' +
+                ", item=" + item +
+                ", type=" + type +
                 '}';
     }
 
     public static class Builder{
-        private int type_id;
-        private String item_id;
+        private String id;
+        private Type type;
+        private Item item;
 
-        public Builder setType_id(int type_id) {
-            this.type_id = type_id;
+        public Builder theirId(String id) {
+            this.id = id;
             return this;
         }
 
-        public Builder setItem_id(String item_id) {
-            this.item_id = item_id;
+        public Builder theirType(Type type) {
+            this.type = type;
             return this;
         }
+
+        public Builder theirItem(Item item) {
+            this.item = item;
+            return this;
+        }
+
         public Builder copy(Item_Type item_type){
-            this.type_id = item_type.type_id;
-            this.item_id = item_type.item_id;
+            this.id = item_type.id;
+            this.type = item_type.type;
+            this.item = item_type.item;
             return this;
         }
+
         public Item_Type build(){
             return new Item_Type(this);
         }
     }
-    @Override
-    public boolean equals(Object o)
-    {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Item_Type item_type = (Item_Type) o;
-        return item_type.equals(item_type.type_id);
-    }
-    @Override
-    public int hashCode()
-    {
-        return Objects.hash(type_id);
-    }
-
 }

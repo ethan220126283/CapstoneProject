@@ -1,23 +1,24 @@
 package za.ac.cput.library_management.factory;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import za.ac.cput.library_management.domain.Type;
-import za.ac.cput.library_management.factory.TypeFactory;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /*   Name:       Darryll Merkeur
  *   Student#:   220253595
  *   Date:       21/09/2022
  */
 
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import za.ac.cput.library_management.domain.Type;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 class TypeFactoryTest {
+
     private Type type;
 
     @BeforeEach
     void setUp()
     {
-        type = TypeFactory.buildType("John", 123);
+        type = TypeFactory.createType("1","Book");
     }
 
     @Test
@@ -33,22 +34,10 @@ class TypeFactoryTest {
     void testNullType_name()
     {
         Exception exception = assertThrows(IllegalArgumentException.class,
-                ()->  TypeFactory.buildType("", 32));
-        String expectedMessage = "Invalid value for params: Name";
+                ()->  TypeFactory.createType(null,null));
+        String expectedMessage = "";
         String returnedMessage = exception.getMessage();
-        assertNotEquals(expectedMessage, returnedMessage);
-    }
-
-
-
-    @Test
-    void testNullType_id()
-    {
-        Exception exception = assertThrows(IllegalArgumentException.class,
-                ()->  TypeFactory.buildType("", 20));
-        String expectedMessage = "Invalid value for params:  id";
-        String returnedMessage = exception.getMessage();
-        assertNotNull(expectedMessage, returnedMessage);
+        assertEquals(expectedMessage, returnedMessage);
     }
 
 }

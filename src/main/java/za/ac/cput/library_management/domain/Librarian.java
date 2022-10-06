@@ -1,26 +1,34 @@
 package za.ac.cput.library_management.domain;
 
+/*   Name:       Faeedh Daniels
+ *   Student#:   219174288
+ */
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.Table;
 
 @Entity
-public class Librarian implements Serializable {
-
-    //Class Attributes
+@Table(name = "librarian")
+public class Librarian {
     @Id
-    @GeneratedValue
-    //@Column(name = "librarian_id")
-    private int id;
-    private String name;
-    private String address;
+    @Column(name = "librarian_id", nullable = false)
+    private String id;
+
+    @Column(name = "tel")
     private String tel;
+
+    @Column(name = "address")
+    private String address;
+
+    @Column(name = "name")
+    private String name;
 
     //Private constructor
     protected Librarian() {}
 
-    private Librarian(Librarian.Builder builder) {
+    private Librarian(Builder builder) {
         this.id = builder.id;
         this.name = builder.name;
         this.address = builder.address;
@@ -31,7 +39,7 @@ public class Librarian implements Serializable {
     public static class Builder {
 
         //Builder Attributes
-        private int id;
+        private String id;
         private String name;
         private String address;
         private String tel;
@@ -40,22 +48,22 @@ public class Librarian implements Serializable {
         public Builder() {}
 
         //Builder returns
-        public Librarian.Builder librarian_ID (int id) {
+        public Builder theirID (String id) {
             this.id = id;
             return this;
         }
 
-        public Librarian.Builder librarian_Name (String name) {
+        public Builder theirName (String name) {
             this.name = name;
             return this;
         }
 
-        public Librarian.Builder librarian_Address (String address) {
+        public Builder theirAddress (String address) {
             this.address = address;
             return this;
         }
 
-        public Librarian.Builder librarian_Tel (String tel) {
+        public Builder theirTel (String tel) {
             this.tel = tel;
             return this;
         }
@@ -72,19 +80,19 @@ public class Librarian implements Serializable {
     }
 
     //Getters
-    public int getLibrarian_Id() {
+    public String getId() {
         return id;
     }
 
-    public String getLibrarian_Name() {
+    public String getName() {
         return name;
     }
 
-    public String getLibrarian_Address() {
+    public String getAddress() {
         return address;
     }
 
-    public String getLibrarian_Tel() {
+    public String getTel() {
         return tel;
     }
 
@@ -97,4 +105,5 @@ public class Librarian implements Serializable {
                 ", tel='" + tel + '\'' +
                 '}';
     }
+
 }

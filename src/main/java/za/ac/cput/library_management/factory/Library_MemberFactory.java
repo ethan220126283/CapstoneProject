@@ -1,26 +1,20 @@
 package za.ac.cput.library_management.factory;
-/*   Name:       Ethan Christopher Swart
- *   Student#:   220126283
- *   Date:       27/09/2022
- */
 
-
-
+import za.ac.cput.library_management.domain.Library;
 import za.ac.cput.library_management.domain.Library_Member;
+import za.ac.cput.library_management.domain.Member;
 import za.ac.cput.library_management.util.Helper;
-
-
 
 public class Library_MemberFactory {
 
-    public static Library_Member createLibraryMember(int library_id, int member_id){
-        if(Helper.isZero(library_id) ||   Helper.isZero(member_id) ){
-            throw new IllegalArgumentException("library id and member id are mandatory attribute");
+    public static Library_Member createLibrary_Member(String id, Library library, Member member){
+        if(Helper.isNullorEmptyObject(library) ||   Helper.isNullorEmptyObject(member) || Helper.isNullorEmpty(id) ){
+            throw new IllegalArgumentException("missing mandatory attribute");
         }
         return new Library_Member.Builder()
-                .setMember_id(member_id)
-                .setLibrary_id(library_id)
+                .setId(id)
+                .setMember(member)
+                .setLibrary(library)
                 .build();
     }
-
 }

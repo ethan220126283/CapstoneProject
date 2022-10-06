@@ -1,76 +1,86 @@
 package za.ac.cput.library_management.domain;
 
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.*;
 
 @Entity
-public class Library_Librarian implements Serializable {
-
-    //Class Attributes
+@Table(name = "library_librarian")
+public class Library_Librarian {
     @Id
-    @GeneratedValue
-    //@Column(name = "librarylibrarian_id")
-    private int library_id;
-    private int librarian_id;
+    @Column(name = "libary_librarian_id", nullable = false)
+    private String id;
+
+    @ManyToOne
+    @JoinColumn(name = "library_id")
+    private Library library;
+
+    @ManyToOne
+    @JoinColumn(name = "librarian_id")
+    private Librarian librarian;
 
     //Private constructor
-    protected Library_Librarian() {
-    }
+    protected Library_Librarian() {}
 
     private Library_Librarian(Builder builder) {
-        this.library_id = builder.library_id;
-        this.librarian_id = builder.librarian_id;
+        this.id = builder.id;
+        this.library = builder.library;
+        this.librarian = builder.librarian;
     }
-
     public static class Builder {
 
         //Builder Attributes
-        private int library_id;
-        private int librarian_id;
+        private String id;
+        private Library library;
+        private Librarian librarian;
 
         //Builder Constructor
-        public Builder() {
-        }
+        public Builder() {}
 
         //Builder Returns
-        public Library_Librarian.Builder libraryId(int library_id) {
-            this.library_id = library_id;
+        public Builder theirId(String id) {
+            this.id = id;
             return this;
         }
 
-        public Library_Librarian.Builder librarianId(int librarian_id) {
-            this.librarian_id = librarian_id;
+        public Builder theirLibrary(Library library) {
+            this.library = library;
+            return this;
+        }
+
+        public Builder theirLibrarian(Librarian librarian) {
+            this.librarian = librarian;
             return this;
         }
 
         //Build Method
         public Library_Librarian build() {
             Library_Librarian library_librarian = new Library_Librarian();
-            library_librarian.library_id = this.library_id;
-            library_librarian.librarian_id = this.librarian_id;
+            library_librarian.id = this.id;
+            library_librarian.library = this.library;
+            library_librarian.librarian = this.librarian;
             return library_librarian;
         }
+    }
 
-        //Getters
-        public int getLibrary_Id() {
-            return library_id;
-        }
+    //Getters
+    public String getId() {
+        return id;
+    }
 
-        public int getLibrarian_id() {
-            return librarian_id;
-        }
+    public Library getLibrary() {
+        return library;
+    }
 
+    public Librarian getLibrarian() {
+        return librarian;
+    }
 
-        //toString Method
-        @Override
-        public String toString() {
-            return
-                    "Library: library_Id: " +
-                            library_id + ", library_Name: " +
-                            librarian_id;
-        }
+    //toString
+    @Override
+    public String toString() {
+        return "Library_Librarian{" +
+                "id='" + id + '\'' +
+                ", library=" + library +
+                ", librarian=" + librarian +
+                '}';
     }
 }

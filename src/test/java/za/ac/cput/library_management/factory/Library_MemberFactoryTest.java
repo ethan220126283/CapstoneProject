@@ -1,32 +1,36 @@
 package za.ac.cput.library_management.factory;
 
-import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
+import za.ac.cput.library_management.domain.Library;
 import za.ac.cput.library_management.domain.Library_Member;
-import org.junit.jupiter.api.Assertions;
-import za.ac.cput.library_management.factory.Library_MemberFactory;
+import za.ac.cput.library_management.domain.Member;
 
+import static org.junit.jupiter.api.Assertions.*;
 
 class Library_MemberFactoryTest {
+
+    Library library = LibraryFactory.createLibrary(
+            "1",
+            "James Maxwell Library",
+            "123 Brown Street",
+            "072 123 4567"
+    );
+
+    Member member = MemberFactory.createMember(
+            "1",
+            "John",
+            "26 West Street Strand",
+            "0219875036",
+            "active"
+    );
+
+
     @Test
+    void createLibrary_Member() {
 
-    public void testCreateLibraryMember() {
-        Library_Member library_member = Library_MemberFactory.createLibraryMember(151, 5464);
-
+        Library_Member library_member = Library_MemberFactory.createLibrary_Member("1",library,member);
         System.out.println(library_member.toString());
         assertNotNull(library_member);
 
     }
-
-    @Test
-
-    public void testCreateLibraryMembersWithNullValues(){
-        IllegalArgumentException thrown = Assertions
-                .assertThrows(IllegalArgumentException.class, () -> {
-                    Library_Member library_member = Library_MemberFactory.createLibraryMember(0,0);
-                    System.out.println(library_member.toString());
-                 },"IllegalArgumentException was expected");
-
-        assertEquals("attributes cannot be empty or null.",thrown.getMessage());
-        }
 }

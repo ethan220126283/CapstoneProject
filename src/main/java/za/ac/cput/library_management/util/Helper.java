@@ -7,10 +7,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Helper {
-    
+
     //Check for null or empty String field
     public static boolean isNullorEmpty(String s){
         return (s == null || s.equals ("") || s.isEmpty()|| s.equalsIgnoreCase("null"));
+    }
+
+    public static boolean isNullorEmptyObject(Object o){
+        return (o == null);
     }
 
     //Check for null or empty int field

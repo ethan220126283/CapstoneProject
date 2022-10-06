@@ -5,24 +5,31 @@ package za.ac.cput.library_management.domain;
  *   Date:       22/09/2022
  */
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.io.Serializable;
+import javax.persistence.Table;
 
 @Entity
-public class Item implements Serializable {
-
-    //Class Attributes
+@Table(name = "item")
+public class Item {
+    //Attributes
     @Id
-    @GeneratedValue
+    @Column(name = "item_id", nullable = false)
     private String id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "author")
     private String author;
+
+    @Column(name = "genre")
     private String genre;
+
+    @Column(name = "status")
     private String status;
 
-    //Private constructor
     protected Item() {}
 
     private Item(Builder builder) {
@@ -85,23 +92,23 @@ public class Item implements Serializable {
     }
 
     //Getters
-    public String getItem_Id() {
+    public String getId() {
         return id;
     }
 
-    public String getItem_Name() {
+    public String getName() {
         return name;
     }
 
-    public String getItem_Author() {
+    public String getAuthor() {
         return author;
     }
 
-    public String getItem_Genre() {
+    public String getGenre() {
         return genre;
     }
 
-    public String getItem_Status() {
+    public String getStatus() {
         return status;
     }
 
@@ -115,4 +122,5 @@ public class Item implements Serializable {
                 ", status='" + status + '\'' +
                 '}';
     }
+
 }
