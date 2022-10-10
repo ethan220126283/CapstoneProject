@@ -11,6 +11,10 @@ import za.ac.cput.library_management.domain.Library;
 import za.ac.cput.library_management.repository.LibraryRepository;
 import za.ac.cput.library_management.service.LibraryService;
 
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 @Service
 public class LibraryServiceImpl implements LibraryService {
 
@@ -23,6 +27,9 @@ public class LibraryServiceImpl implements LibraryService {
 
     @Override
     public Library read(String id) {return this.repository.findById(id).orElse(null);}
+
+    @Override
+    public List<Library> getAll() { return this.repository.findAll().stream().collect(Collectors.toList());}
 
     @Override
     public boolean delete(String id) {
