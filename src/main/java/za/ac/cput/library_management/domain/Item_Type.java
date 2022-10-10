@@ -20,7 +20,7 @@ public class Item_Type {
     private Item item;
 
     @ManyToOne
-    @JoinColumn(name = "type_type_id")
+    @JoinColumn(name = "type_id")
     private Type type;
 
     protected Item_Type(){}
