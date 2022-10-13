@@ -25,20 +25,23 @@ class LibrarianServiceImplTest {
             "1",
             "Franko Otiento",
             "1752 Gandy Street",
-            "123 465 8586"
+            "123 465 8586",
+            null
     );
 
     private static final Librarian librarian2= LibrarianFactory.createLibrarian(
             "2",
             "Martina Brant",
             "3768 Maxwell Street",
-            "123 745 1504"
+            "123 745 1504",
+            null
     );
     private static final Librarian librarian3= LibrarianFactory.createLibrarian(
             "3",
             "Tobias Norwood",
             "1839 West Fork Street",
-            "123 399 5198"
+            "123 399 5198",
+            null
     );
 
     @Test

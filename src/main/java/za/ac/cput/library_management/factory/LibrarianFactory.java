@@ -12,7 +12,7 @@ import java.util.UUID;
 public class LibrarianFactory {
 
     //Factory Method
-    public static Librarian createLibrarian(String id, String name, String address, String tel) {
+    public static Librarian createLibrarian(String id, String name, String address, String tel, char[] password) {
 
         if (Helper.isNullorEmpty(name)){
             throw new IllegalArgumentException("");
@@ -24,6 +24,7 @@ public class LibrarianFactory {
                 .theirName(name)
                 .theirAddress(address)
                 .theirTel(tel)
+                .theirPassword(password)
                 .build();
     }
 }

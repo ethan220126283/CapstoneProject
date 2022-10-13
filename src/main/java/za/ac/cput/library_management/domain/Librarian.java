@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Arrays;
 
 @Entity
 @Table(name = "librarian")
@@ -25,6 +26,9 @@ public class Librarian {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "password")
+    private char[] password;
+
     //Private constructor
     protected Librarian() {}
 
@@ -33,6 +37,7 @@ public class Librarian {
         this.name = builder.name;
         this.address = builder.address;
         this.tel = builder.tel;
+        this.password = builder.password;
     }
 
     //Builder Class
@@ -43,6 +48,7 @@ public class Librarian {
         private String name;
         private String address;
         private String tel;
+        private char[] password;
 
         //Builder constructor
         public Builder() {}
@@ -68,6 +74,11 @@ public class Librarian {
             return this;
         }
 
+        public Builder theirPassword (char[] password) {
+            this.password = password;
+            return this;
+        }
+
         //Builder method
         public Librarian build() {
             Librarian librarian = new Librarian();
@@ -75,6 +86,7 @@ public class Librarian {
             librarian.name = this.name;
             librarian.address = this.address;
             librarian.tel = this.tel;
+            librarian.password = this.password;
             return librarian;
         }
     }
@@ -96,6 +108,8 @@ public class Librarian {
         return tel;
     }
 
+    public char[] getPassword() {return password;}
+
     @Override
     public String toString() {
         return "Librarian{" +
@@ -103,6 +117,7 @@ public class Librarian {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", tel='" + tel + '\'' +
+                ", password='" + Arrays.toString(password) + '\'' +
                 '}';
     }
 
