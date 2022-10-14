@@ -7,5 +7,8 @@ package za.ac.cput.library_management.service;
 
 import za.ac.cput.library_management.domain.Librarian;
 
+import java.util.List;
+
 public interface LibrarianService extends IService<Librarian,String>{
+    public List<Librarian> getAll();
 }
