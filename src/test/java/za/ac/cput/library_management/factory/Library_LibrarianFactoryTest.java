@@ -20,7 +20,8 @@ class Library_LibrarianFactoryTest {
             "1",
             "James",
             "123 Library Road",
-            "123 456 7890"
+            "123 456 7890",
+            null
     );
 
     @Test

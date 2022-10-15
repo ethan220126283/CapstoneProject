@@ -14,11 +14,15 @@ class LibrarianFactoryTest {
 
     @Test
     public void testCreateLibrarian() {
+
+        char[] passwordArray = new char[]{'p','a','s','s','w','o','r','d'};
+
         Librarian librarian = LibrarianFactory.createLibrarian(
                 "1",
                 "James",
                 "123 Library Road",
-                "123 456 7890"
+                "123 456 7890",
+                passwordArray
         );
         System.out.println(librarian.toString());
         assertNotNull(librarian);
@@ -28,7 +32,7 @@ class LibrarianFactoryTest {
     public void testCreateLibrarianWithNullValues() {
         IllegalArgumentException thrown = Assertions
                 .assertThrows(IllegalArgumentException.class, () -> {
-                    Librarian librarian = LibrarianFactory.createLibrarian(null,null,null,null);
+                    Librarian librarian = LibrarianFactory.createLibrarian(null,null,null,null, null);
                     System.out.println(librarian.toString());
                 }, "IllegalArgumentException was expected");
 
@@ -40,6 +44,7 @@ class LibrarianFactoryTest {
         Librarian librarian = LibrarianFactory.createLibrarian(
                 "1",
                 "District Six Library",
+                null,
                 null,
                 null
         );

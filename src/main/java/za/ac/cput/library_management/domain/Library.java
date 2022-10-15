@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Objects;
 
 @Entity
 @Table(name = "library")
@@ -105,5 +106,20 @@ public class Library {
                         name + ", library_Address: " +
                         address + ", library_Tel: " +
                         tel;
+    }
+
+    //Equals method
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Library library = (Library) o;
+        return id.equals(library.id) && name.equals(library.name) && Objects.equals(address, library.address) && Objects.equals(tel, library.tel);
+    }
+
+    //hashCode method
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, address, tel);
     }
 }
