@@ -6,9 +6,13 @@ package za.ac.cput.library_management.service;
  */
 
 
+
 import za.ac.cput.library_management.domain.Member;
 
+import java.util.List;
 
 public interface MemberService extends IService<Member, String>{
+
+    public List<Member> getAll();
 
 }
