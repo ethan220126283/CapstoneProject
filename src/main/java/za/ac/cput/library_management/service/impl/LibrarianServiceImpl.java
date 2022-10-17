@@ -11,6 +11,9 @@ import za.ac.cput.library_management.domain.Librarian;
 import za.ac.cput.library_management.repository.LibrarianRepository;
 import za.ac.cput.library_management.service.LibrarianService;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class LibrarianServiceImpl implements LibrarianService {
 
@@ -29,6 +32,9 @@ public class LibrarianServiceImpl implements LibrarianService {
     public Librarian read(String id) {
         return this.repository.findById(id).orElse(null);
     }
+
+    @Override
+    public List<Librarian> getAll() { return this.repository.findAll().stream().collect(Collectors.toList());}
 
     @Override
     public boolean delete(String id) {
