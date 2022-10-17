@@ -12,6 +12,9 @@ import za.ac.cput.library_management.repository.MemberRepository;
 import za.ac.cput.library_management.service.MemberService;
 
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -25,6 +28,9 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public Member read(String id) {return this.repository.findById(id).orElse(null);}
+
+    @Override
+    public List<Member> getAll() { return this.repository.findAll().stream().collect(Collectors.toList());}
 
     @Override
     public boolean delete(String id) {
