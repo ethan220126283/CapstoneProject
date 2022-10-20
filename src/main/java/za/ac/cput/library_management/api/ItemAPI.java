@@ -24,12 +24,12 @@ public class ItemAPI {
         this.itemService = itemService;
     }
 
-    //Get all members
+    //Get all items
     public List<Item> getItem(){
         return itemService.getAll();
     }
 
-    //Get by members name
+    //Get by items name
     public Item getItemsByName(String name) {
 
         List<Item> items = itemService.getAll();
@@ -44,7 +44,7 @@ public class ItemAPI {
         return result;
     }
 
-    //Get members by ID
+    //Get items by ID
     public Item getItemsById(String id){
         return itemService.read(id);
     }
@@ -54,7 +54,7 @@ public class ItemAPI {
         itemService.save(item);
     }
 
-    //Delete members by id
+    //Delete items by id
     public Boolean deleteItemsById(String id){
         return itemService.delete(id);
 
