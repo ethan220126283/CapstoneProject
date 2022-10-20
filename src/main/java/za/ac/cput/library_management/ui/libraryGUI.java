@@ -81,6 +81,8 @@ public class libraryGUI extends JFrame {
     private LibrarianAPI librarianAPI;
     private LibraryAPI libraryAPI;
 
+    //private BooklineAPI booklineAPI;
+
 
     @Autowired
     public libraryGUI(LibraryAPI libraryAPI, ItemAPI itemAPI, LibrarianAPI librarianAPI, MemberAPI memberAPI) {
@@ -91,9 +93,28 @@ public class libraryGUI extends JFrame {
         this.librarianAPI = librarianAPI;
         this.libraryAPI = libraryAPI;
 
+        initTables(this.libraryAPI,this.itemAPI,this.librarianAPI,this.memberAPI);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(pnlMain);
         this.pack();
+    }
+
+    public void initTables(LibraryAPI libraryAPI, ItemAPI itemAPI, LibrarianAPI librarianAPI, MemberAPI memberAPI) {
+
+        String[] memberColumnNames = {"ID","Name","Address","Tel"};
+        //Object[][] memberData = (memberAPI.getMembersTable());
+        //memberTable = new JTable(memberData, memberColumnNames);
+
+        String[] itemColumnNames = {"ID","Name","Author","Genre","Status"};
+        //Object[][] itemData = (itemAPI.getItemsTable());
+        //itemTable = new JTable(itemData, itemColumnNames);
+
+        String[] librarianColumnNames = {"ID","Name","Address","Tel"};
+        //Object[][] librarianData = (librarianAPI.getLibrariansTable());
+        //librarianTable = new JTable(librarianData, librarianColumnNames);
+
+
+
     }
 }
