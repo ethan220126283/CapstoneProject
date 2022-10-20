@@ -6,6 +6,10 @@ package za.ac.cput.library_management.service;
  */
 
 import za.ac.cput.library_management.domain.Item;
+import za.ac.cput.library_management.domain.Librarian;
+
+import java.util.List;
 
 public interface ItemService extends IService<Item, String>{
+    public List<Item> getAll();
 }
