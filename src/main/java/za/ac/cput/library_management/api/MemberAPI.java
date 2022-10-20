@@ -60,6 +60,14 @@ public class MemberAPI {
 
     //Return Object[][]
     public Object[][] getMembersTable() {
+
+        List<Member> members = getMembers();
+        Object[][] data;
+
+        /*for (int i = 0; i < members.size(); i++) {
+            data.
+        }*/
+
         return null;
     }
 
