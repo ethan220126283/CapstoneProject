@@ -9,6 +9,7 @@ import za.ac.cput.library_management.api.LibraryAPI;
 import za.ac.cput.library_management.api.MemberAPI;
 
 import javax.swing.*;
+import java.util.Arrays;
 
 @Component
 @ComponentScan({"za.ac.cput.library_management"})
@@ -103,8 +104,10 @@ public class libraryGUI extends JFrame {
     public void initTables(LibraryAPI libraryAPI, ItemAPI itemAPI, LibrarianAPI librarianAPI, MemberAPI memberAPI) {
 
         String[] memberColumnNames = {"ID","Name","Address","Tel"};
-        //Object[][] memberData = (memberAPI.getMembersTable());
-        //memberTable = new JTable(memberData, memberColumnNames);
+        Object[][] memberData = (memberAPI.getMembersTable());
+        //System.out.println(Arrays.deepToString(memberData));
+        memberAPI.addMember("7","James","123 Street","021 443 3252", "Active");
+        memberTable = new JTable(memberData, memberColumnNames);
 
         String[] itemColumnNames = {"ID","Name","Author","Genre","Status"};
         //Object[][] itemData = (itemAPI.getItemsTable());
