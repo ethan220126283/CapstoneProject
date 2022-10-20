@@ -11,6 +11,7 @@ import java.awt.*;
 public class LibraryManagementApplication {
 
     public static void main(String[] args) {
+
         var ctx = new SpringApplicationBuilder(libraryGUI.class)
                 .headless(false)
                 .run(args);
@@ -19,6 +20,7 @@ public class LibraryManagementApplication {
             var ex = ctx.getBean(libraryGUI.class);
             ex.setVisible(true);
         });
+
     }
 
 }
