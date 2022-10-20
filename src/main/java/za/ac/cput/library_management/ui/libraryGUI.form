@@ -236,9 +236,9 @@
                   </hspacer>
                 </children>
               </grid>
-              <tabbedpane id="29153" binding="tbpnlAdd">
+              <tabbedpane id="29153" binding="tbpnlInsert">
                 <constraints>
-                  <tabbedpane title="Add"/>
+                  <tabbedpane title="Insert"/>
                 </constraints>
                 <properties/>
                 <border type="none"/>
@@ -365,52 +365,52 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="e7e8f" class="javax.swing.JLabel">
+                      <component id="e7e8f" class="javax.swing.JLabel" binding="addItemIDLabel">
                         <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Label"/>
+                          <text value="Identifier:"/>
                         </properties>
                       </component>
-                      <component id="b579b" class="javax.swing.JLabel">
+                      <component id="b579b" class="javax.swing.JLabel" binding="addItemNameLabel">
                         <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Label"/>
+                          <text value="Name:"/>
                         </properties>
                       </component>
-                      <component id="87867" class="javax.swing.JLabel">
+                      <component id="87867" class="javax.swing.JLabel" binding="addItemAuthorLabel">
                         <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Label"/>
+                          <text value="Author:"/>
                         </properties>
                       </component>
-                      <component id="32d3a" class="javax.swing.JLabel">
+                      <component id="32d3a" class="javax.swing.JLabel" binding="addItemGenreLabel">
                         <constraints>
-                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Label"/>
+                          <text value="Genre:"/>
                         </properties>
                       </component>
-                      <component id="881ac" class="javax.swing.JButton" binding="button3" default-binding="true">
+                      <component id="881ac" class="javax.swing.JButton" binding="addItemButton1" default-binding="true">
                         <constraints>
                           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Button"/>
+                          <text value="Add Item"/>
                         </properties>
                       </component>
-                      <component id="d405c" class="javax.swing.JButton" binding="button4" default-binding="true">
+                      <component id="d405c" class="javax.swing.JButton" binding="cancelButton1" default-binding="true">
                         <constraints>
                           <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Button"/>
+                          <text value="Cancel"/>
                         </properties>
                       </component>
                     </children>
@@ -423,7 +423,7 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="3e813" class="javax.swing.JTextField" binding="textField6" default-binding="true">
+                      <component id="3e813" class="javax.swing.JTextField" binding="addMemberIDText">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -431,7 +431,7 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="19772" class="javax.swing.JTextField" binding="textField7" default-binding="true">
+                      <component id="19772" class="javax.swing.JTextField" binding="addMemberNameText">
                         <constraints>
                           <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -439,7 +439,7 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="66c18" class="javax.swing.JTextField" binding="textField8" default-binding="true">
+                      <component id="66c18" class="javax.swing.JTextField" binding="addMemberAddressText">
                         <constraints>
                           <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -447,7 +447,7 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="14214" class="javax.swing.JTextField" binding="textField9" default-binding="true">
+                      <component id="14214" class="javax.swing.JTextField" binding="addMemberTelText">
                         <constraints>
                           <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -455,52 +455,52 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="1e11" class="javax.swing.JButton" binding="button5" default-binding="true">
+                      <component id="1e11" class="javax.swing.JButton" binding="addMemberAddButton">
                         <constraints>
                           <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Button"/>
+                          <text value="Add Member"/>
                         </properties>
                       </component>
-                      <component id="2487e" class="javax.swing.JButton" binding="button6" default-binding="true">
+                      <component id="2487e" class="javax.swing.JButton" binding="addMemberCancelButton">
                         <constraints>
                           <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Button"/>
+                          <text value="Cancel"/>
                         </properties>
                       </component>
-                      <component id="91c01" class="javax.swing.JLabel">
+                      <component id="91c01" class="javax.swing.JLabel" binding="addMemberIDLabel">
                         <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Label"/>
+                          <text value="ID Number:"/>
                         </properties>
                       </component>
-                      <component id="966c" class="javax.swing.JLabel">
+                      <component id="966c" class="javax.swing.JLabel" binding="addMemberNameLabel">
                         <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Label"/>
+                          <text value="Name:"/>
                         </properties>
                       </component>
-                      <component id="cf885" class="javax.swing.JLabel">
+                      <component id="cf885" class="javax.swing.JLabel" binding="addMemberAddressLabel">
                         <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Label"/>
+                          <text value="Address:"/>
                         </properties>
                       </component>
-                      <component id="898e4" class="javax.swing.JLabel">
+                      <component id="898e4" class="javax.swing.JLabel" binding="addMemberTelLabel">
                         <constraints>
-                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Label"/>
+                          <text value="Tel:"/>
                         </properties>
                       </component>
                     </children>
@@ -513,7 +513,7 @@
                     <properties/>
                     <border type="none"/>
                     <children>
-                      <component id="c1b95" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+                      <component id="c1b95" class="javax.swing.JTextField" binding="addLibrarianNameText">
                         <constraints>
                           <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -521,7 +521,7 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="3415c" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+                      <component id="3415c" class="javax.swing.JTextField" binding="addLibrarianAddressText">
                         <constraints>
                           <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -529,7 +529,7 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="d5503" class="javax.swing.JTextField" binding="textField3" default-binding="true">
+                      <component id="d5503" class="javax.swing.JTextField" binding="addLibrarianTelText">
                         <constraints>
                           <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
@@ -537,44 +537,44 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <component id="5e3c7" class="javax.swing.JLabel">
+                      <component id="5e3c7" class="javax.swing.JLabel" binding="addLibrarianNameLabel">
                         <constraints>
-                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Label"/>
+                          <text value="Name:"/>
                         </properties>
                       </component>
-                      <component id="9d0c" class="javax.swing.JLabel">
+                      <component id="9d0c" class="javax.swing.JLabel" binding="addLibrarianAddressLabel">
                         <constraints>
-                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Label"/>
+                          <text value="Address:"/>
                         </properties>
                       </component>
-                      <component id="2d343" class="javax.swing.JLabel">
+                      <component id="2d343" class="javax.swing.JLabel" binding="addLibrarianTelLabel">
                         <constraints>
-                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Label"/>
+                          <text value="Tel:"/>
                         </properties>
                       </component>
-                      <component id="6bc3a" class="javax.swing.JButton" binding="button1" default-binding="true">
+                      <component id="6bc3a" class="javax.swing.JButton" binding="addLibrarianAddButton">
                         <constraints>
                           <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Button"/>
+                          <text value="Add Librarian"/>
                         </properties>
                       </component>
-                      <component id="82153" class="javax.swing.JButton" binding="button2" default-binding="true">
+                      <component id="82153" class="javax.swing.JButton" binding="addLibrarianCancelButton">
                         <constraints>
                           <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                         </constraints>
                         <properties>
-                          <text value="Button"/>
+                          <text value="Cancel"/>
                         </properties>
                       </component>
                     </children>

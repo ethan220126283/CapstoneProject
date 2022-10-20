@@ -1,13 +1,17 @@
 package za.ac.cput.library_management.ui;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
+import za.ac.cput.library_management.api.ItemAPI;
+import za.ac.cput.library_management.api.LibrarianAPI;
+import za.ac.cput.library_management.api.LibraryAPI;
 import za.ac.cput.library_management.api.MemberAPI;
 
 import javax.swing.*;
 
 @Component
+@ComponentScan({"za.ac.cput.library_management"})
 public class libraryGUI extends JFrame {
     private JPanel pnlMain;
     private JPanel pnlView;
@@ -32,7 +36,7 @@ public class libraryGUI extends JFrame {
     private JTextField itemSearchText;
     private JTable memberTable;
     private JTable itemTable;
-    private JTabbedPane tbpnlAdd;
+    private JTabbedPane tbpnlInsert;
     private JPanel addBooklinePanel;
     private JPanel addItemPanel;
     private JPanel addMemberPanel;
@@ -43,36 +47,50 @@ public class libraryGUI extends JFrame {
     private JTextField txtAddBooklineDueDate;
     private JButton btnAddBooklineBorrow;
     private JButton btnAddBooklineCancel;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JTextField textField3;
-    private JButton button1;
-    private JButton button2;
+    private JTextField addLibrarianNameText;
+    private JTextField addLibrarianAddressText;
+    private JTextField addLibrarianTelText;
+    private JButton addLibrarianAddButton;
+    private JButton addLibrarianCancelButton;
     private JComboBox comboBox1;
     private JTextField textField4;
     private JTextField textField5;
     private JComboBox comboBox2;
-    private JButton button3;
-    private JButton button4;
-    private JTextField textField6;
-    private JTextField textField7;
-    private JTextField textField8;
-    private JTextField textField9;
-    private JButton button5;
-    private JButton button6;
+    private JButton addItemButton1;
+    private JButton cancelButton1;
+    private JTextField addMemberIDText;
+    private JTextField addMemberNameText;
+    private JTextField addMemberAddressText;
+    private JTextField addMemberTelText;
+    private JButton addMemberAddButton;
+    private JButton addMemberCancelButton;
+    private JLabel addLibrarianNameLabel;
+    private JLabel addLibrarianAddressLabel;
+    private JLabel addLibrarianTelLabel;
+    private JLabel addMemberIDLabel;
+    private JLabel addMemberNameLabel;
+    private JLabel addMemberAddressLabel;
+    private JLabel addMemberTelLabel;
+    private JLabel addItemIDLabel;
+    private JLabel addItemNameLabel;
+    private JLabel addItemAuthorLabel;
+    private JLabel addItemGenreLabel;
 
     private MemberAPI memberAPI;
+    private ItemAPI itemAPI;
+    private LibrarianAPI librarianAPI;
+    private LibraryAPI libraryAPI;
+
 
     @Autowired
-    libraryGUI(MemberAPI memberAPI) {
-        this.memberAPI = memberAPI;
-    }
-
-    public libraryGUI() {
+    public libraryGUI(LibraryAPI libraryAPI, ItemAPI itemAPI, LibrarianAPI librarianAPI, MemberAPI memberAPI) {
         super();
 
-        memberAPI.addMember("5","James","123 Street", "021 323 3245", "Active");
-        memberSearchText.setText(memberAPI.getMembersById("5").toString());
+        this.memberAPI = memberAPI;
+        this.itemAPI = itemAPI;
+        this.librarianAPI = librarianAPI;
+        this.libraryAPI = libraryAPI;
+
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(pnlMain);
