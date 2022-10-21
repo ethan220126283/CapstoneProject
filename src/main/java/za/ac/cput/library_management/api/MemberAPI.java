@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+import static za.ac.cput.library_management.factory.MemberFactory.createMember;
+
 @Component
 public class MemberAPI {
 
@@ -49,7 +51,7 @@ public class MemberAPI {
     }
 
     public void addMember(String id,String name,String address, String tel, String status){
-        Member member = MemberFactory.createMember(id,name,address,tel,status);
+        Member member = createMember(id,name,address,tel,status);
         memberService.save(member);
     }
 
@@ -60,26 +62,9 @@ public class MemberAPI {
     }
 
     //Return Object[][]
-    public Object[][] getMembersTable() {
+    public Member[][] getMembersTable() {
 
-        List<Member> members = getMembers();
-        Object[][] data = new Object[members.size()][];
-
-        for (int i = 0; i < members.size(); i++) {
-            Member member = members.get(i);
-            int j = 0;
-            data[i][j] = member.getId();
-            j++;
-            data[i][j] = member.getName();
-            j++;
-            data[i][j] = member.getAddress();
-            j++;
-            data[i][j] = member.getTel();
-            j++;
-            data[i][j] = member.getStatus();
-        }
-        //System.out.println(Arrays.deepToString(data));
-        return data;
+        return null;
     }
 
 }

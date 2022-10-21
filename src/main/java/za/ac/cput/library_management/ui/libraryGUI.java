@@ -9,6 +9,7 @@ import za.ac.cput.library_management.api.LibraryAPI;
 import za.ac.cput.library_management.api.MemberAPI;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.util.Arrays;
 
 @Component
@@ -76,6 +77,10 @@ public class libraryGUI extends JFrame {
     private JLabel addItemNameLabel;
     private JLabel addItemAuthorLabel;
     private JLabel addItemGenreLabel;
+    private JScrollPane memberTableScrollPane;
+    private JScrollPane itemTableScrollPane;
+    private JScrollPane librarianTableScrollPane;
+    private JScrollPane booklineTableScrollPane;
 
     private MemberAPI memberAPI;
     private ItemAPI itemAPI;
@@ -94,30 +99,38 @@ public class libraryGUI extends JFrame {
         this.librarianAPI = librarianAPI;
         this.libraryAPI = libraryAPI;
 
-        initTables(this.libraryAPI,this.itemAPI,this.librarianAPI,this.memberAPI);
+        //JTable memberTable = new JTable(new DefaultTableModel(new Object[]{"ID","Name","Address","Tel","Status"}, 6));
+
+        createTables(this.memberAPI);
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(pnlMain);
         this.pack();
     }
 
-    public void initTables(LibraryAPI libraryAPI, ItemAPI itemAPI, LibrarianAPI librarianAPI, MemberAPI memberAPI) {
+    private void createTables(MemberAPI memberAPI) {
 
-        String[] memberColumnNames = {"ID","Name","Address","Tel"};
-        Object[][] memberData = (memberAPI.getMembersTable());
-        //System.out.println(Arrays.deepToString(memberData));
-        memberAPI.addMember("7","James","123 Street","021 443 3252", "Active");
-        memberTable = new JTable(memberData, memberColumnNames);
+        Object[][] memberData = memberAPI.getMembersTable();
 
-        String[] itemColumnNames = {"ID","Name","Author","Genre","Status"};
-        //Object[][] itemData = (itemAPI.getItemsTable());
-        //itemTable = new JTable(itemData, itemColumnNames);
+        memberTable.setModel(new DefaultTableModel(
+                memberData,
+                new String[]{"ID","Name","Address","Tel","Status"}
+        ));
 
-        String[] librarianColumnNames = {"ID","Name","Address","Tel"};
-        //Object[][] librarianData = (librarianAPI.getLibrariansTable());
-        //librarianTable = new JTable(librarianData, librarianColumnNames);
+        itemTable.setModel(new DefaultTableModel(
+                null,
+                new String[]{"ID","Name","Author","Genre","Status"}
+        ));
 
+        booklineTable.setModel(new DefaultTableModel(
+                null,
+                new String[]{"ID","Name","Address","Tel","Status"}
+        ));
 
-
+        librarianTable.setModel(new DefaultTableModel(
+                null,
+                new String[]{"ID","Name","Address","Tel"}
+        ));
     }
+
 }
