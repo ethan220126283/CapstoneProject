@@ -7,8 +7,11 @@ import za.ac.cput.library_management.domain.Member;
 import za.ac.cput.library_management.factory.MemberFactory;
 import za.ac.cput.library_management.service.impl.MemberServiceImpl;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+
+import static za.ac.cput.library_management.factory.MemberFactory.createMember;
 
 @Component
 public class MemberAPI {
@@ -47,8 +50,8 @@ public class MemberAPI {
       return memberService.read(id);
     }
 
-    public void addMember(String id,String name,String address, String tell, String status){
-        Member member = MemberFactory.createMember(id,name,address,tell,status);
+    public void addMember(String id,String name,String address, String tel, String status){
+        Member member = createMember(id,name,address,tel,status);
         memberService.save(member);
     }
 
@@ -56,6 +59,12 @@ public class MemberAPI {
     public Boolean deleteMemberById(String id){
         return memberService.delete(id);
 
+    }
+
+    //Return Object[][]
+    public Member[][] getMembersTable() {
+
+        return null;
     }
 
 }

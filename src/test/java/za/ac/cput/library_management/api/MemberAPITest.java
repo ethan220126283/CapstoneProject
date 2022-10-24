@@ -44,7 +44,7 @@ class MemberAPITest {
 
     @Test
     void e_deleteMemeberById(){
-        assertTrue(api.deleteMemberById("BellJAmos"));
+        assertTrue(api.deleteMemberById("BellJAmos1"));
 
     }
 
