@@ -1,6 +1,6 @@
 package za.ac.cput.library_management.factory;
 
-/*   Name:       Faeedh Daniels
+/*   Name:       Mogammad Faeedh Daniels
  *   Student#:   219174288
  */
 
@@ -14,8 +14,8 @@ public class LibrarianFactory {
     //Factory Method
     public static Librarian createLibrarian(String id, String name, String address, String tel, char[] password) {
 
-        if (Helper.isNullorEmpty(name)){
-            throw new IllegalArgumentException("");
+        if (Helper.isNullorEmpty(id) || Helper.isNullorEmpty(name) || Helper.isNullorEmpty(address) || Helper.isNullorEmpty(tel)){
+            throw new IllegalArgumentException("Attributes cannot be empty or null");
         }
 
         //Return
