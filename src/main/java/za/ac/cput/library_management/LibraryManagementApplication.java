@@ -12,8 +12,8 @@ import java.awt.*;
 public class LibraryManagementApplication {
 
     public static void main(String[] args) {
-/*
-        var ctx = new SpringApplicationBuilder(libraryGUI.class)
+
+        /*var ctx = new SpringApplicationBuilder(libraryGUI.class)
                 .headless(false)
                 .run(args);
 
@@ -22,15 +22,17 @@ public class LibraryManagementApplication {
             ex.setVisible(true);
         });*/
 
-
-        var ctx = new SpringApplicationBuilder(LoginView.class)
+        /*var ctx = new SpringApplicationBuilder(LoginView.class)
                 .headless(false)
                 .run(args);
 
         EventQueue.invokeLater(() -> {
             var ex = ctx.getBean(LoginView.class);
             ex.showGUI();
-        });
+        });*/
+
+        SpringApplication.run(LibraryManagementApplication.class, args);
+
 
     }
 

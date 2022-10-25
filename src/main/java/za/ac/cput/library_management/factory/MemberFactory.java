@@ -20,7 +20,7 @@ public class MemberFactory {
         return new Member.Builder()
                 .setId(id)
                 .setName(name)
-                .setStatus(status)
+                .setTel(tel)
                 .setAddress(address)
                 .setStatus(status)
                 .build();
