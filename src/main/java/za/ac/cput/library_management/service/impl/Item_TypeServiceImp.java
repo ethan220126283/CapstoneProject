@@ -1,5 +1,6 @@
 package za.ac.cput.library_management.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import za.ac.cput.library_management.domain.Item_Type;
 import za.ac.cput.library_management.repository.Item_TypeRepository;
 import za.ac.cput.library_management.service.Item_TypeService;
@@ -8,6 +9,7 @@ import za.ac.cput.library_management.service.Item_TypeService;
  *   Date:       21/09/2022
  */
 
+@Service
 public class Item_TypeServiceImp implements Item_TypeService {
     private Item_TypeRepository repository;
     @Autowired
