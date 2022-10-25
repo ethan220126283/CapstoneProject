@@ -64,14 +64,20 @@ public class ItemAPI {
     public Object[][] getItemsTable() {
 
         List<Item> items = getItem();
-        Object[][] data;
+        Object[][] objects = new Object[items.size()][4];
 
-        /*for (int i = 0; i < items.size(); i++) {
-            data.
-        }*/
-
-        return null;
+        for (int i = 0; i < items.size(); i++) {
+            Item item = items.get(i);
+            if (item == null) {
+                objects[i] = null;
+            } else {
+                objects[i][0] = item.getId();
+                objects[i][1] = item.getName();
+                objects[i][2] = item.getAuthor();
+                objects[i][3] = item.getGenre();
+                objects[i][4] = item.getStatus();
+            }
+        }
+        return objects;
     }
-
-
 }
