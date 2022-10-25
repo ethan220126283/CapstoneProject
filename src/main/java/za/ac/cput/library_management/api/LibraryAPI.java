@@ -56,4 +56,25 @@ public class LibraryAPI {
 
         return result;
     }
+
+    //Return Object[][]
+    public Object[][] getLibrariesTable(){
+
+        List<Library> libraries = libraryService.getAll();
+        String[] array;
+        Object[][] objects = new Object[libraries.size()][4];
+        for (int i = 0; i< libraries.size(); i++){
+            Library library = libraries.get(i);
+            if(library == null){
+                objects[i] = null;
+            }else {
+                objects[i][0] = library.getId();
+                objects[i][1] = library.getName();
+                objects[i][2] = library.getAddress();
+                objects[i][3] = library.getTel();
+
+            }
+        }
+        return objects;
+    }
 }
