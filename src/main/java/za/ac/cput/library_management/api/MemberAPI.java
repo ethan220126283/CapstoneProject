@@ -62,9 +62,27 @@ public class MemberAPI {
     }
 
     //Return Object[][]
-    public Member[][] getMembersTable() {
+    public Object[][] getMembersTable() {
 
-        return null;
+        List<Member> members = memberService.getAll();
+        String[] array;
+        Object[][] objects = new Object[members.size()][5];
+
+        for (int i = 0; i < members.size(); i++) {
+            Member member = members.get(i);
+            if (member == null) {
+                objects[i] = null;
+            }
+            else {
+                objects[i][0] = member.getId();
+                objects[i][1] = member.getName();
+                objects[i][2] = member.getAddress();
+                objects[i][3] = member.getTel();
+                objects[i][4] = member.getStatus();
+            }
+        }
+
+        return objects;
     }
 
 }

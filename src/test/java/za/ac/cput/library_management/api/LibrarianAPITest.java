@@ -6,6 +6,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.library_management.domain.Librarian;
+import za.ac.cput.library_management.domain.Member;
 
 import java.util.List;
 
@@ -23,10 +24,10 @@ class LibrarianAPITest {
     }
 
     @Test
-    void b_getLibrarianNames() {
-        List<String> names = api.getLibrarianNames();
-        System.out.println(names);
-        assertNotNull(names);
+    void b_getLibrarianById() {
+        Librarian result = api.getLibrarianById("17");
+        System.out.println(result);
+        assertEquals("17",result.getId());
     }
 
     @Test

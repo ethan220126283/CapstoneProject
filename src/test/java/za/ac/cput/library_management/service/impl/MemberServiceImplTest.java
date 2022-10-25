@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ContextConfiguration;
 import za.ac.cput.library_management.domain.Member;
 import za.ac.cput.library_management.factory.MemberFactory;
 
@@ -18,13 +19,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @SpringBootTest
+//@ContextConfiguration({"classpath*:za/ac/cput/library_management/LibraryManagementApplication.java"})
 class MemberServiceImplTest {
 
     @Autowired
     private MemberServiceImpl service;
 
     private static final Member member1= MemberFactory.createMember(
-            "Bel5985","Jason Ford","598 Belmont Street ,Bellville", "0219875698","acvtive"
+            "Bel5985","Jason Ford","598 Belmont Street ,Bellville", "0219875698","active"
     );
 
     private static final Member member2= MemberFactory.createMember(
