@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.library_management.domain.Library;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -47,4 +48,10 @@ class LibraryAPITest {
     void e_deleteLibraryById() {
         assertTrue(api.deleteLibraryById("4"));
     }
+
+    @Test
+    void f_getLibrariesTable(){
+        System.out.println(Arrays.deepToString(api.getLibrariesTable()));
+    }
+
 }
