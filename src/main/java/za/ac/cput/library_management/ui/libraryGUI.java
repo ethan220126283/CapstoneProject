@@ -12,8 +12,8 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.util.Arrays;
 
-@Component
-@ComponentScan({"za.ac.cput.library_management"})
+//@Component
+//@ComponentScan({"za.ac.cput.library_management"})
 public class libraryGUI extends JFrame {
     private JPanel pnlMain;
     private JPanel pnlView;

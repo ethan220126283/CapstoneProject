@@ -50,7 +50,9 @@
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <text value="Search"/>
+                    </properties>
                   </component>
                   <component id="17cfd" class="javax.swing.JButton" binding="booklineReturn">
                     <constraints>
@@ -107,7 +109,9 @@
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <text value="Search"/>
+                    </properties>
                   </component>
                   <component id="f8be4" class="javax.swing.JButton" binding="deleteLibrarianButton">
                     <constraints>
@@ -164,7 +168,9 @@
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <text value="Search"/>
+                    </properties>
                   </component>
                   <component id="918bc" class="javax.swing.JButton" binding="deleteLibrarianButton1">
                     <constraints>
@@ -221,7 +227,9 @@
                         <preferred-size width="150" height="-1"/>
                       </grid>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <text value="Search"/>
+                    </properties>
                   </component>
                   <component id="a52f4" class="javax.swing.JButton" binding="deleteMemberButton">
                     <constraints>

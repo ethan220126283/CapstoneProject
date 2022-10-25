@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.library_management.domain.Member;
 
+import java.util.Arrays;
 import java.util.List;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
@@ -46,6 +47,11 @@ class MemberAPITest {
     void e_deleteMemeberById(){
         assertTrue(api.deleteMemberById("BellJAmos1"));
 
+    }
+
+    @Test
+    void f_getMembersTable() {
+        System.out.println(Arrays.deepToString(api.getMembersTable()));
     }
 
 
