@@ -5,7 +5,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-@Component
+//@Component
 public class LoginView implements ActionListener {
     private final JFrame mainFrame;
     private final JPanel pnlLeft, pnlRight;
