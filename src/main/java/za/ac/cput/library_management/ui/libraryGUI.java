@@ -392,33 +392,13 @@ public class libraryGUI extends JFrame {
         deleteLibrarianButton1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to delete this Item?");
-                if (result == JOptionPane.YES_OPTION) {
-                    int row = itemTable.getSelectedRow();
-                    if (row == -1) {
-                        JOptionPane.showMessageDialog(pnlMain, "Error: No Item is selected", "Error", JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        String select = itemTable.getModel().getValueAt(row, 0).toString();
-                        itemAPI.deleteItemsById(select);
-                        createTables();
-                    }
-                }
+
             }
         });
         booklineReturn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to delete this Bookline?");
-                if (result == JOptionPane.YES_OPTION) {
-                    int row = booklineTable.getSelectedRow();
-                    if (row == -1) {
-                        JOptionPane.showMessageDialog(pnlMain, "Error: No bookline is selected", "Error", JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        String select = itemTable.getModel().getValueAt(row, 0).toString();
-                        booklineAPI.deleteById(select);
-                        createTables();
-                    }
-                }
+
             }
         });
     }

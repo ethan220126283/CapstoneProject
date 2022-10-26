@@ -37,8 +37,7 @@ public class LibraryAPI {
     public List<Library> getLibraries() {return libraryService.getAll();}
 
     //Add library to DB
-    public void addLibrary(String id, String name, String address, String tel) {
-        Library library = LibraryFactory.createLibrary(id, name, address, tel);
+    public void addLibrary(Library library) {
         libraryService.save(library);
     }
 

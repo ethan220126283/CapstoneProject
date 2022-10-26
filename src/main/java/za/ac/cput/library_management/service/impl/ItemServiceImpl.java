@@ -22,8 +22,7 @@ public class ItemServiceImpl implements ItemService {
 
     private ItemRepository repository;
 
-    @Autowired
-    ItemServiceImpl(ItemRepository repository) {this.repository = repository;}
+    @Autowired ItemServiceImpl(ItemRepository repository) {this.repository = repository;}
 
     @Override
     public Item save(Item item) {return this.repository.save(item);}
