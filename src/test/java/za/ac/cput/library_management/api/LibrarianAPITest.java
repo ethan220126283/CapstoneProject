@@ -6,7 +6,6 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.library_management.domain.Librarian;
-import za.ac.cput.library_management.domain.Member;
 import za.ac.cput.library_management.factory.LibrarianFactory;
 
 import java.util.List;
