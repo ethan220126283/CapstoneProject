@@ -1,11 +1,10 @@
 package za.ac.cput.library_management.ui;
 import org.springframework.stereotype.Component;
-import za.ac.cput.library_management.util.Helper;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-//@Component
+@Component
 public class LoginView implements ActionListener {
     private final JFrame mainFrame;
     private final JPanel pnlLeft, pnlRight;
@@ -45,8 +44,8 @@ public class LoginView implements ActionListener {
         mainFrame.setLocationRelativeTo(null);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-//        txtUsername.setText("john");
-//        txtPassword.setText("123");
+        txtUsername.setText("john");
+        txtPassword.setText("123");
 
     }
 
@@ -90,19 +89,20 @@ public class LoginView implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == btnLogin) {
-            if(txtPassword.getText().equals("") || Helper.isValidEmail("Name", txtUsername.getText())) {
-                JOptionPane.showMessageDialog(mainFrame, "Incorrect username / password");
-            } else {
                 String Name = txtUsername.getText();
                 String password = txtPassword.getText();
+                if(Name.equals("john") && password.equals("123")){
+
+                    JOptionPane.showMessageDialog(mainFrame,"Logged in");
+
+                   libraryGUI libGui = new libraryGUI();
+                    libGui.setVisible(true);
 
 
+        }else{
+                    JOptionPane.showMessageDialog(mainFrame,"Try again");
 
-            }
-
-        }
+                }
     }
-
 
 }

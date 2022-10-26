@@ -1,12 +1,14 @@
 package za.ac.cput.library_management.api;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.library_management.domain.Item;
 
 import java.util.Arrays;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
 public class ItemAPITest {
     @Autowired
     ItemAPI api;

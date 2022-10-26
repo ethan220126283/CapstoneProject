@@ -48,8 +48,7 @@ public class ItemAPI {
         return itemService.read(id);
     }
 
-    public void addItems(String id, String name, String author, String genre, String status){
-        Item item = ItemFactory.createItem(id,name,author,genre,status);
+    public void addItems(Item item){
         itemService.save(item);
     }
 

@@ -4,9 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import za.ac.cput.library_management.api.*;
-import za.ac.cput.library_management.domain.Librarian;
+import za.ac.cput.library_management.domain.Bookline;
+import za.ac.cput.library_management.domain.Item;
 import za.ac.cput.library_management.domain.Library;
 import za.ac.cput.library_management.domain.Member;
+import za.ac.cput.library_management.factory.BooklineFactory;
+import za.ac.cput.library_management.factory.ItemFactory;
+import za.ac.cput.library_management.domain.Librarian;
 import za.ac.cput.library_management.factory.LibrarianFactory;
 import za.ac.cput.library_management.factory.LibraryFactory;
 import za.ac.cput.library_management.factory.MemberFactory;
@@ -15,6 +19,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.Objects;
 
 @Component
@@ -111,6 +116,7 @@ public class libraryGUI extends JFrame {
     private JLabel addLibraryTelLabel;
     private JTextField addBooklineLibraryText;
     private JTextField addBooklineItemText;
+    private JTextField addBooklineMember;
     private JTextField addItemIDText;
     private JTextField addItemGenreText;
 
@@ -231,57 +237,146 @@ public class libraryGUI extends JFrame {
         btnAddBooklineBorrow.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-        //TODO: ADD ITEM
-        addItemAddButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-
-            }
-        });
-
-        addMemberAddButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (addMemberIDText.getText() == null
-                        || addMemberNameText.getText() == null
-                        || addMemberAddressText.getText() == null
-                        || addMemberTelText.getText() == null
-                        || Objects.equals(addMemberIDText.getText(), "")
-                        || Objects.equals(addMemberNameText.getText(), "")
-                        || Objects.equals(addMemberAddressText.getText(), "")
-                        || Objects.equals(addMemberTelText.getText(), "")
+                if (addBooklineLibraryText.getText() == null
+                        || addBooklineLibraryText.getText() == null
+                        || txtAddBooklineMember.getText() == null
+                        || txtAddBooklineDueDate.getText() == null
+                        || Objects.equals(addBooklineLibraryText.getText(), "")
+                        || Objects.equals(addBooklineItemText.getText(), "")
+                        || Objects.equals(txtAddBooklineMember.getText(), "")
+                        || Objects.equals(txtAddBooklineDueDate.getText(), "")
                 ) {
                     JOptionPane.showMessageDialog(pnlMain,"Error:One or more fields are missing data.","Error",JOptionPane.ERROR_MESSAGE);
                 } else {
-                    int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to create this Member?");
+                    int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to create this Bookline?");
                     if (result == JOptionPane.YES_OPTION) {
-                        Member member = MemberFactory.createMember(
-                                addMemberIDText.getText(),
-                                addMemberNameText.getText(),
-                                addMemberAddressText.getText(),
-                                addMemberTelText.getText(),
-                                "Active"
-                        );
-                        if (member == null) {
-                            JOptionPane.showMessageDialog(pnlMain, "Error: Member entity was not created", "Error", JOptionPane.ERROR_MESSAGE);
+                        Library library = libraryAPI.getLibraryById(addBooklineLibraryText.getText());
+                        Item item = itemAPI.getItemsById(addBooklineItemText.getText());
+                        Member member = memberAPI.getMembersById(txtAddBooklineMember.getText());
+                        Bookline bookline = BooklineFactory.createBookline(
+                                "id",
+                                library,
+                                item,
+                                member,
+                                null,
+                                new Date(),
+                                null);
+
+                        if (bookline == null) {
+                            JOptionPane.showMessageDialog(pnlMain, "Error: Bookline entity was not created", "Error", JOptionPane.ERROR_MESSAGE);
                         } else {
-                            memberAPI.addMember(member);
+                            booklineAPI.addBookline(bookline);
                             createTables();
 
                             tbpnlView.setSelectedIndex(3);
-                            addMemberIDText.setText("");
-                            addMemberNameText.setText("");
-                            addMemberAddressText.setText("");
-                            addMemberTelText.setText("");
+                            addBooklineLibraryText.setText("");
+                            addBooklineItemText.setText("");
+                            txtAddBooklineMember.setText("");
+                            txtAddBooklineDueDate.setText("");
                         }
                     }
                 }
             }
         });
 
+                //TODO: ADD ITEM
+                addItemAddButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (addItemIDText.getText() == null
+                                || addItemNameText.getText() == null
+                                || addItemGenreText.getText() == null
+                                || addItemAuthorText.getText() == null
+                                || Objects.equals(addItemIDText.getText(), "")
+                                || Objects.equals(addItemNameText.getText(), "")
+                                || Objects.equals(addItemGenreText.getText(), "")
+                                || Objects.equals(addItemAuthorText.getText(), "")
+                        ) {
+                            JOptionPane.showMessageDialog(pnlMain, "Error:One or more fields are missing data.", "Error", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to create this Item?");
+                            if (result == JOptionPane.YES_OPTION) {
+                                Item item = ItemFactory.createItem(
+                                        addItemIDText.getText(),
+                                        addItemNameText.getText(),
+                                        addItemGenreText.getText(),
+                                        addItemAuthorText.getText(),
+                                        "Active"
+                                );
+                                if (item == null) {
+                                    JOptionPane.showMessageDialog(pnlMain, "Error: Item entity was not created", "Error", JOptionPane.ERROR_MESSAGE);
+                                } else {
+                                    itemAPI.addItems(item);
+                                       createTables();
+
+                                    tbpnlView.setSelectedIndex(3);
+                                    addItemIDText.setText("");
+                                    addItemNameText.setText("");
+                                    addItemGenreText.setText("");
+                                    addItemAuthorText.setText("");
+                                }
+                            }
+                        }
+                    }
+                });
+
+                addMemberAddButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (addMemberIDText.getText() == null
+                                || addMemberNameText.getText() == null
+                                || addMemberAddressText.getText() == null
+                                || addMemberTelText.getText() == null
+                                || Objects.equals(addMemberIDText.getText(), "")
+                                || Objects.equals(addMemberNameText.getText(), "")
+                                || Objects.equals(addMemberAddressText.getText(), "")
+                                || Objects.equals(addMemberTelText.getText(), "")
+                        ) {
+                            JOptionPane.showMessageDialog(pnlMain, "Error:One or more fields are missing data.", "Error", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to create this Member?");
+                            if (result == JOptionPane.YES_OPTION) {
+                                Member member = MemberFactory.createMember(
+                                        addMemberIDText.getText(),
+                                        addMemberNameText.getText(),
+                                        addMemberAddressText.getText(),
+                                        addMemberTelText.getText(),
+                                        "Active"
+                                );
+                                if (member == null) {
+                                    JOptionPane.showMessageDialog(pnlMain, "Error: Member entity was not created", "Error", JOptionPane.ERROR_MESSAGE);
+                                } else {
+                                    memberAPI.addMember(member);
+                                       createTables();
+
+                                    tbpnlView.setSelectedIndex(3);
+                                    addMemberIDText.setText("");
+                                    addMemberNameText.setText("");
+                                    addMemberAddressText.setText("");
+                                    addMemberTelText.setText("");
+                                }
+                            }
+                        }
+                    }
+                });
+      
+                deleteMemberButton.addActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to delete this Member?");
+                        if (result == JOptionPane.YES_OPTION) {
+                            int row = memberTable.getSelectedRow();
+                            if (row == -1) {
+                                JOptionPane.showMessageDialog(pnlMain, "Error: No Member is selected", "Error", JOptionPane.ERROR_MESSAGE);
+                            } else {
+                                String select = memberTable.getModel().getValueAt(row, 0).toString();
+                                memberAPI.deleteMemberById(select);
+                                createTables();
+                            }
+                        }
+                    }
+                });
+                
         //TODO: ADD LIBRARIAN
         addLibrarianAddButton.addActionListener(new ActionListener() {
             @Override
@@ -322,6 +417,7 @@ public class libraryGUI extends JFrame {
                 }
             }
         });
+        
         //TODO: ADD LIBRARY
         addLibraryAddButton.addActionListener(new ActionListener() {
             @Override
@@ -353,7 +449,6 @@ public class libraryGUI extends JFrame {
   });
 
         libraryDeleteLibrary.addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
                 int result = JOptionPane.showConfirmDialog(pnlMain,"Are you sure you want to delete this member?");
@@ -365,21 +460,10 @@ public class libraryGUI extends JFrame {
                 }
             }
         });
-
-        deleteMemberButton.addActionListener(new ActionListener() {
+        booklineReturn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to delete this Member?");
-                if (result == JOptionPane.YES_OPTION) {
-                    int row = memberTable.getSelectedRow();
-                    if (row == -1 ) {
-                        JOptionPane.showMessageDialog(pnlMain,"Error: No Member is selected","Error",JOptionPane.ERROR_MESSAGE);
-                    }else {
-                        String select = memberTable.getModel().getValueAt(row, 0).toString();
-                        memberAPI.deleteMemberById(select);
-                        createTables();
-                    }
-                }
+
             }
         });
 
@@ -400,6 +484,8 @@ public class libraryGUI extends JFrame {
             }
         });
     }
+
+
 
     private void createTables() {
 
@@ -435,5 +521,10 @@ public class libraryGUI extends JFrame {
                 new String[]{"ID","Name","Address","Tel"}
         ));
     }
-
 }
+
+
+
+
+
+
