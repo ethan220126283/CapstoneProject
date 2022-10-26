@@ -4,14 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import za.ac.cput.library_management.api.*;
+import za.ac.cput.library_management.domain.Member;
+import za.ac.cput.library_management.factory.MemberFactory;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-//@Component
-//@ComponentScan({"za.ac.cput.library_management"})
+@Component
+@ComponentScan({"za.ac.cput.library_management"})
 public class libraryGUI extends JFrame {
     private JPanel pnlMain;
     private JPanel pnlView;
@@ -197,7 +199,15 @@ public class libraryGUI extends JFrame {
         addMemberAddButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                Member member = MemberFactory.createMember(
+                        addMemberIDText.getText(),
+                        addMemberNameText.getText(),
+                        addMemberAddressText.getText(),
+                        addMemberTelText.getText(),
+                        "Active"
+                );
+                memberAPI.addMember(member);
+                createTables();
             }
         });
         //TODO: ADD LIBRARIAN

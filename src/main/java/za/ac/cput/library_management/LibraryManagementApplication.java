@@ -13,14 +13,14 @@ public class LibraryManagementApplication {
 
     public static void main(String[] args) {
 
-        /*var ctx = new SpringApplicationBuilder(libraryGUI.class)
+        var ctx = new SpringApplicationBuilder(libraryGUI.class)
                 .headless(false)
                 .run(args);
 
         EventQueue.invokeLater(() -> {
             var ex = ctx.getBean(libraryGUI.class);
             ex.setVisible(true);
-        });*/
+        });
 
         /*var ctx = new SpringApplicationBuilder(LoginView.class)
                 .headless(false)
@@ -31,7 +31,7 @@ public class LibraryManagementApplication {
             ex.showGUI();
         });*/
 
-        SpringApplication.run(LibraryManagementApplication.class, args);
+        //SpringApplication.run(LibraryManagementApplication.class, args);
 
 
     }

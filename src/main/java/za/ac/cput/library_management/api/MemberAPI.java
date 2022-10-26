@@ -50,8 +50,7 @@ public class MemberAPI {
       return memberService.read(id);
     }
 
-    public void addMember(String id,String name,String address, String tel, String status){
-        Member member = createMember(id,name,address,tel,status);
+    public void addMember(Member member){
         memberService.save(member);
     }
 
