@@ -588,7 +588,7 @@
                       </component>
                     </children>
                   </grid>
-                  <grid id="b4b19" binding="addLibrarianPanel" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="b4b19" binding="addLibrarianPanel" layout-manager="GridLayoutManager" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <tabbedpane title="Add Librarian"/>
@@ -598,7 +598,7 @@
                     <children>
                       <component id="c1b95" class="javax.swing.JTextField" binding="addLibrarianNameText">
                         <constraints>
-                          <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                          <grid row="1" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
                           </grid>
                         </constraints>
@@ -606,7 +606,7 @@
                       </component>
                       <component id="3415c" class="javax.swing.JTextField" binding="addLibrarianAddressText">
                         <constraints>
-                          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                          <grid row="2" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
                           </grid>
                         </constraints>
@@ -614,7 +614,7 @@
                       </component>
                       <component id="d5503" class="javax.swing.JTextField" binding="addLibrarianTelText">
                         <constraints>
-                          <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                          <grid row="3" column="1" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
                           </grid>
                         </constraints>
@@ -652,17 +652,9 @@
                           <text value="Add Librarian"/>
                         </properties>
                       </component>
-                      <component id="82153" class="javax.swing.JButton" binding="addLibrarianCancelButton">
-                        <constraints>
-                          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                        <properties>
-                          <text value="Cancel"/>
-                        </properties>
-                      </component>
                       <component id="3edd6" class="javax.swing.JTextField" binding="addLibrarianIDText">
                         <constraints>
-                          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+                          <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
                             <preferred-size width="150" height="-1"/>
                           </grid>
                         </constraints>
@@ -676,9 +668,17 @@
                           <text value="ID:"/>
                         </properties>
                       </component>
+                      <component id="82153" class="javax.swing.JButton" binding="addLibrarianCancelButton">
+                        <constraints>
+                          <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                        </constraints>
+                        <properties>
+                          <text value="Cancel"/>
+                        </properties>
+                      </component>
                     </children>
                   </grid>
-                  <grid id="a0eed" binding="addLibrary" layout-manager="GridLayoutManager" row-count="6" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                  <grid id="a0eed" binding="addLibrary" layout-manager="GridLayoutManager" row-count="5" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                     <margin top="0" left="0" bottom="0" right="0"/>
                     <constraints>
                       <tabbedpane title="Add Library"/>
@@ -694,11 +694,6 @@
                         </constraints>
                         <properties/>
                       </component>
-                      <vspacer id="acffb">
-                        <constraints>
-                          <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-                        </constraints>
-                      </vspacer>
                       <component id="63133" class="javax.swing.JTextField" binding="addLibraryNameText">
                         <constraints>
                           <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">

@@ -233,7 +233,7 @@ public class libraryGUI extends JFrame {
 
             }
         });
-        //TODO: ADD MEMBER
+
         addMemberAddButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -283,6 +283,18 @@ public class libraryGUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+            }
+        });
+        deleteMemberButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to delete this Member?");
+                if (result == JOptionPane.YES_OPTION) {
+                    int row = memberTable.getSelectedRow();
+                    String select = memberTable.getModel().getValueAt(row, 0).toString();
+                    memberAPI.deleteMemberById(select);
+                    createTables();
+                }
             }
         });
     }
