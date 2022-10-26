@@ -33,9 +33,9 @@ public class BooklineAPI {
                 objects[i] = null;
             } else {
                 objects[i][0] = bookline.getId();
-                objects[i][1] = bookline.getMember();
-                objects[i][2] = bookline.getItem();
-                objects[i][3] = bookline.getLibrary();
+                objects[i][1] = bookline.getMember().getId();
+                objects[i][2] = bookline.getItem().getId();
+                objects[i][3] = bookline.getLibrary().getId();
                 objects[i][4] = bookline.getDue_Date();
                 objects[i][5] = bookline.getBorrow_Date();
                 objects[i][6] = bookline.getReturn_Date();
@@ -88,8 +88,7 @@ public class BooklineAPI {
         return m;
     }
     //addBookline(Bookline bookline) //void
-    public void save(String id, Library library, Item item, Member member, Date borrow_date, Date due_date, Date return_date) {
-        Bookline bookline = BooklineFactory.createBookline("ID", library, item, member, new Date(), null, null);
+    public void save(Bookline bookline) {
         booklineService.save(bookline);
     }
 
