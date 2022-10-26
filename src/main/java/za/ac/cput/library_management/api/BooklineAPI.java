@@ -88,8 +88,7 @@ public class BooklineAPI {
         return m;
     }
     //addBookline(Bookline bookline) //void
-    public void save(String id, Library library, Item item, Member member, Date borrow_date, Date due_date, Date return_date) {
-        Bookline bookline = BooklineFactory.createBookline("ID", library, item, member, new Date(), null, null);
+    public void save(Bookline bookline) {
         booklineService.save(bookline);
     }
 
