@@ -2,6 +2,8 @@ package za.ac.cput.library_management.api;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import za.ac.cput.library_management.domain.Item;
+
+import java.util.Arrays;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,5 +45,11 @@ public class ItemAPITest {
     void e_deleteItemsById(){
         assertTrue(api.deleteItemsById("1"));
 
+    }
+
+    @Test
+    void  f_getItemsTable(){
+        Object[][] items = api.getItemsTable();
+        System.out.println(Arrays.deepToString(items));
     }
 }
