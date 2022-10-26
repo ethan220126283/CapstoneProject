@@ -249,6 +249,7 @@ public class libraryGUI extends JFrame {
         Object[][] librarianData = this.librarianAPI.getLibrariansTable();
         Object[][] booklineData = this.booklineAPI.getBooklineTable();
 
+
         memberTable.setModel(new DefaultTableModel(
                 memberData,
                 new String[]{"ID","Name","Address","Tel","Status"}
@@ -261,7 +262,7 @@ public class libraryGUI extends JFrame {
 
         booklineTable.setModel(new DefaultTableModel(
                 booklineData,
-                new String[]{"ID","Name","Address","Tel","Status"}
+                new String[]{"ID","Member","Item","Library","Date"}
         ));
 
         librarianTable.setModel(new DefaultTableModel(
