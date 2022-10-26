@@ -382,6 +382,23 @@ public class libraryGUI extends JFrame {
                 }
             }
         });
+
+        deleteLibrarianButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to delete this Librarian?");
+                if (result == JOptionPane.YES_OPTION) {
+                    int row = librarianTable.getSelectedRow();
+                    if (row == -1 ) {
+                        JOptionPane.showMessageDialog(pnlMain,"Error: No Librarian is selected","Error",JOptionPane.ERROR_MESSAGE);
+                    }else {
+                        String select = librarianTable.getModel().getValueAt(row, 0).toString();
+                        librarianAPI.deleteLibrarianById(select);
+                        createTables();
+                    }
+                }
+            }
+        });
     }
 
     private void createTables() {
