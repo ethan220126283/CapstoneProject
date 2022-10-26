@@ -11,6 +11,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 @Component
 @ComponentScan({"za.ac.cput.library_management"})
@@ -199,17 +200,40 @@ public class libraryGUI extends JFrame {
         addMemberAddButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Member member = MemberFactory.createMember(
-                        addMemberIDText.getText(),
-                        addMemberNameText.getText(),
-                        addMemberAddressText.getText(),
-                        addMemberTelText.getText(),
-                        "Active"
-                );
-                memberAPI.addMember(member);
-                createTables();
+                if (addMemberIDText.getText() == null
+                        || addMemberNameText.getText() == null
+                        || addMemberAddressText.getText() == null
+                        || addMemberTelText.getText() == null
+                        || Objects.equals(addMemberIDText.getText(), "")
+                        || Objects.equals(addMemberNameText.getText(), "")
+                        || Objects.equals(addMemberAddressText.getText(), "")
+                        || Objects.equals(addMemberTelText.getText(), "")
+                ) {
+                    JOptionPane.showMessageDialog(pnlMain,"Error:One or more fields are missing data.","Error",JOptionPane.ERROR_MESSAGE);
+                } else {
+                    Member member = MemberFactory.createMember(
+                            addMemberIDText.getText(),
+                            addMemberNameText.getText(),
+                            addMemberAddressText.getText(),
+                            addMemberTelText.getText(),
+                            "Active"
+                    );
+                    if (member == null) {
+                        JOptionPane.showMessageDialog(pnlMain,"Error: Member entity was not created","Error",JOptionPane.ERROR_MESSAGE);
+                    } else {
+                        memberAPI.addMember(member);
+                        createTables();
+
+                        tbpnlView.setSelectedIndex(3);
+                        addMemberIDText.setText("");
+                        addMemberNameText.setText("");
+                        addMemberAddressText.setText("");
+                        addMemberTelText.setText("");
+                    }
+                }
             }
         });
+
         //TODO: ADD LIBRARIAN
         addLibrarianAddButton.addActionListener(new ActionListener() {
             @Override
