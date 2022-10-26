@@ -28,8 +28,7 @@ public class LibrarianAPI {
     public List<Librarian> getLibrarians() {return librarianService.getAll();}
 
     //Add librarian to DB
-    public void addLibrarian(String id, String name, String address, String tel, char[] password) {
-        Librarian librarian = LibrarianFactory.createLibrarian(id, name, address, tel, password);
+    public void addLibrarian(Librarian librarian) {
         librarianService.save(librarian);
     }
 
