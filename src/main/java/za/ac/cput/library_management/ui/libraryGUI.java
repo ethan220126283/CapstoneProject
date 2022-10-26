@@ -3,14 +3,12 @@ package za.ac.cput.library_management.ui;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
-import za.ac.cput.library_management.api.ItemAPI;
-import za.ac.cput.library_management.api.LibrarianAPI;
-import za.ac.cput.library_management.api.LibraryAPI;
-import za.ac.cput.library_management.api.MemberAPI;
+import za.ac.cput.library_management.api.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import java.util.Arrays;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 //@Component
 //@ComponentScan({"za.ac.cput.library_management"})
@@ -54,12 +52,12 @@ public class libraryGUI extends JFrame {
     private JTextField addLibrarianTelText;
     private JButton addLibrarianAddButton;
     private JButton addLibrarianCancelButton;
-    private JComboBox comboBox1;
-    private JTextField textField4;
-    private JTextField textField5;
-    private JComboBox comboBox2;
-    private JButton addItemButton1;
-    private JButton cancelButton1;
+    private JComboBox addItemIdentifierCmb;
+    private JTextField addItemNameText;
+    private JTextField addItemAuthorText;
+    private JComboBox addItemGenreCmb;
+    private JButton addItemAddButton;
+    private JButton addItemCancelButton;
     private JTextField addMemberIDText;
     private JTextField addMemberNameText;
     private JTextField addMemberAddressText;
@@ -81,36 +79,141 @@ public class libraryGUI extends JFrame {
     private JScrollPane itemTableScrollPane;
     private JScrollPane librarianTableScrollPane;
     private JScrollPane booklineTableScrollPane;
+    private JLabel addBooklineLibraryLabel;
+    private JLabel addBooklineItemLabel;
+    private JLabel addBooklineMemberLabel;
+    private JLabel addBooklineDueDateLabel;
+    private JTextField addLibrarianIDText;
+    private JLabel addLibrarianIDLabel;
 
     private MemberAPI memberAPI;
     private ItemAPI itemAPI;
     private LibrarianAPI librarianAPI;
     private LibraryAPI libraryAPI;
 
-    //private BooklineAPI booklineAPI;
+    private BooklineAPI booklineAPI;
 
 
     @Autowired
-    public libraryGUI(LibraryAPI libraryAPI, ItemAPI itemAPI, LibrarianAPI librarianAPI, MemberAPI memberAPI) {
+    public libraryGUI(LibraryAPI libraryAPI, ItemAPI itemAPI, LibrarianAPI librarianAPI, MemberAPI memberAPI, BooklineAPI booklineAPI) {
         super();
 
         this.memberAPI = memberAPI;
         this.itemAPI = itemAPI;
         this.librarianAPI = librarianAPI;
         this.libraryAPI = libraryAPI;
+        this.booklineAPI = booklineAPI;
 
         //JTable memberTable = new JTable(new DefaultTableModel(new Object[]{"ID","Name","Address","Tel","Status"}, 6));
 
-        createTables(this.memberAPI);
+        createTables();
 
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setContentPane(pnlMain);
         this.pack();
+        borrowButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tbpnlView.setSelectedIndex(4);
+                tbpnlInsert.setSelectedIndex(0);
+            }
+        });
+        addLibrarianButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tbpnlView.setSelectedIndex(4);
+                tbpnlInsert.setSelectedIndex(3);
+            }
+        });
+        addItemButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tbpnlView.setSelectedIndex(4);
+                tbpnlInsert.setSelectedIndex(1);
+            }
+        });
+        addMemberButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tbpnlView.setSelectedIndex(4);
+                tbpnlInsert.setSelectedIndex(2);
+            }
+        });
+        btnAddBooklineCancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tbpnlView.setSelectedIndex(0);
+                cmbAddBooklineLibrary.setSelectedIndex(-1);
+                cmbAddBooklineItem.setSelectedIndex(-1);
+                txtAddBooklineMember.setText("");
+                txtAddBooklineDueDate.setText("");
+            }
+        });
+        addMemberCancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tbpnlView.setSelectedIndex(3);
+                addMemberIDText.setText("");
+                addMemberNameText.setText("");
+                addMemberAddressText.setText("");
+                addMemberTelText.setText("");
+            }
+        });
+        addLibrarianCancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tbpnlView.setSelectedIndex(1);
+                addLibrarianIDText.setText("");
+                addLibrarianNameText.setText("");
+                addLibrarianAddressText.setText("");
+                addLibrarianTelText.setText("");
+            }
+        });
+        addItemCancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tbpnlView.setSelectedIndex(2);
+                addItemIdentifierCmb.setSelectedIndex(-1);
+                addItemNameText.setText("");
+                addItemAuthorText.setText("");
+                addItemGenreCmb.setSelectedIndex(-1);
+            }
+        });
+        //TODO: ADD BOOKLINE
+        btnAddBooklineBorrow.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        //TODO: ADD ITEM
+        addItemAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        //TODO: ADD MEMBER
+        addMemberAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
+        //TODO: ADD LIBRARIAN
+        addLibrarianAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
-    private void createTables(MemberAPI memberAPI) {
+    private void createTables() {
 
-        Object[][] memberData = memberAPI.getMembersTable();
+        Object[][] memberData = this.memberAPI.getMembersTable();
+        Object[][] librarianData = this.librarianAPI.getLibrariansTable();
+        Object[][] booklineData = this.booklineAPI.getBooklineTable();
 
         memberTable.setModel(new DefaultTableModel(
                 memberData,
@@ -123,12 +226,12 @@ public class libraryGUI extends JFrame {
         ));
 
         booklineTable.setModel(new DefaultTableModel(
-                null,
+                booklineData,
                 new String[]{"ID","Name","Address","Tel","Status"}
         ));
 
         librarianTable.setModel(new DefaultTableModel(
-                null,
+                librarianData,
                 new String[]{"ID","Name","Address","Tel"}
         ));
     }
