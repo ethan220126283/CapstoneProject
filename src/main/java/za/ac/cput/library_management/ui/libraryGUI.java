@@ -4,7 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;
 import za.ac.cput.library_management.api.*;
+import za.ac.cput.library_management.domain.Library;
 import za.ac.cput.library_management.domain.Member;
+import za.ac.cput.library_management.factory.LibraryFactory;
 import za.ac.cput.library_management.factory.MemberFactory;
 
 import javax.swing.*;
@@ -282,9 +284,46 @@ public class libraryGUI extends JFrame {
         addLibraryAddButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if(addLibraryIDText.getText()== null ||addLibraryNameText.getText() == null || addLibraryAddressText.getText() == null || addLibraryTelText.getText() == null
+                  || Objects.equals(addLibraryIDText.getText(),"")
+                  || Objects.equals(addLibraryNameText.getText(),"")
+                  || Objects.equals(addLibraryAddressText.getText(),"")
+                  || Objects.equals(addLibraryTelText,"")  )
+                    {
+                    JOptionPane.showMessageDialog(pnlMain,"Error fields are missing data", "Error", JOptionPane.ERROR_MESSAGE);
+                }else {
+                    Library library = LibraryFactory.createLibrary(addLibraryIDText.getText(), addLibraryNameText.getText()
+                            ,addLibraryAddressText.getText(),addLibraryTelText.getText());
+                        if(library == null){
+                            JOptionPane.showMessageDialog(pnlMain,"Error fields are missing data", "Error", JOptionPane.ERROR_MESSAGE);
+                        }else {
+                            libraryAPI.addLibrary(library);
+                            createTables();
+                            tbpnlView.setSelectedIndex(3);
+                            addLibraryIDText.setText("");
+                            addLibraryNameText.setText("");
+                            addLibraryAddressText.setText("");
+                            addLibraryTelText.setText("");
+                        }
+                }
 
             }
+  });
+
+        libraryDeleteLibrary.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(pnlMain,"Are you sure you want to delete this member?");
+                if(result == JOptionPane.YES_OPTION){
+                    int row = libraryTable.getSelectedRow();
+                    String select = libraryTable.getModel().getValueAt(row,0).toString();
+                    libraryAPI.deleteLibraryById(select);
+                    createTables();
+                }
+            }
         });
+
         deleteMemberButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
