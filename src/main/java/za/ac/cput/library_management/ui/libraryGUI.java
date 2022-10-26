@@ -306,7 +306,7 @@ public class libraryGUI extends JFrame {
                         }else {
                             libraryAPI.addLibrary(library);
                             createTables();
-                            tbpnlView.setSelectedIndex(3);
+                            tbpnlView.setSelectedIndex(4);
                             addLibraryIDText.setText("");
                             addLibraryNameText.setText("");
                             addLibraryAddressText.setText("");
@@ -355,6 +355,7 @@ public class libraryGUI extends JFrame {
         Object[][] librarianData = this.librarianAPI.getLibrariansTable();
         Object[][] booklineData = this.booklineAPI.getBooklineTable();
         Object[][] libraryData = this.libraryAPI.getLibrariesTable();
+        Object[][] itemData = this.itemAPI.getItemsTable();
 
 
         memberTable.setModel(new DefaultTableModel(
@@ -363,7 +364,7 @@ public class libraryGUI extends JFrame {
         ));
 
         itemTable.setModel(new DefaultTableModel(
-                null,
+                itemData,
                 new String[]{"ID","Name","Author","Genre","Status"}
         ));
 
