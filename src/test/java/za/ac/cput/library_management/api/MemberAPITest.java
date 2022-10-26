@@ -8,6 +8,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.library_management.domain.Member;
+import za.ac.cput.library_management.factory.MemberFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -18,9 +19,10 @@ class MemberAPITest {
 
     @Autowired MemberAPI api;
 
+    private Member member = MemberFactory.createMember("BellJAmos1","John Amos","598 Bellville Cape Town","0219856523","active");
+
     @Test
-    void a_addMember(){api.addMember(
-            "BellJAmos1","John Amos","598 Bellville Cape Town","0219856523","active");}
+    void a_addMember(){api.addMember(member);}
     @Test
     void b_getMembersById(){
         Member result = api.getMembersById("BellJAmos1");

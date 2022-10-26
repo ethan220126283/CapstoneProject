@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.library_management.domain.Librarian;
 import za.ac.cput.library_management.domain.Member;
+import za.ac.cput.library_management.factory.LibrarianFactory;
 
 import java.util.List;
 
@@ -18,9 +19,11 @@ class LibrarianAPITest {
 
     @Autowired LibrarianAPI api;
 
+    private Librarian librarian = LibrarianFactory.createLibrarian("17", "Debby Powe", "3214 Central Avenue", "123 416 2107", null);
+
     @Test
     void a_addLibrarian() {
-        api.addLibrarian("17", "Debby Powe", "3214 Central Avenue", "123 416 2107", new char[]{'D'});
+        api.addLibrarian(librarian);
     }
 
     @Test

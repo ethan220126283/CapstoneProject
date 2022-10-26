@@ -88,6 +88,23 @@ public class libraryGUI extends JFrame {
     private JLabel addBooklineDueDateLabel;
     private JTextField addLibrarianIDText;
     private JLabel addLibrarianIDLabel;
+    private JPanel pnlLibrary;
+    private JTable libraryTable;
+    private JTextField librarySearchText;
+    private JButton libraryAddLibrary;
+    private JButton libraryDeleteLibrary;
+    private JScrollPane libraryTableScrollPane;
+    private JPanel addLibrary;
+    private JTextField addLibraryIDText;
+    private JTextField addLibraryNameText;
+    private JTextField addLibraryAddressText;
+    private JTextField addLibraryTelText;
+    private JButton addLibraryAddButton;
+    private JButton addLibraryCancelButton;
+    private JLabel addLibraryIDLabel;
+    private JLabel addLibraryNameLabel;
+    private JLabel addLibraryAddressLabel;
+    private JLabel addLibraryTelLabel;
 
     private MemberAPI memberAPI;
     private ItemAPI itemAPI;
@@ -117,31 +134,39 @@ public class libraryGUI extends JFrame {
         borrowButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tbpnlView.setSelectedIndex(4);
+                tbpnlView.setSelectedIndex(5);
                 tbpnlInsert.setSelectedIndex(0);
             }
         });
         addLibrarianButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tbpnlView.setSelectedIndex(4);
+                tbpnlView.setSelectedIndex(5);
                 tbpnlInsert.setSelectedIndex(3);
             }
         });
         addItemButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tbpnlView.setSelectedIndex(4);
+                tbpnlView.setSelectedIndex(5);
                 tbpnlInsert.setSelectedIndex(1);
             }
         });
         addMemberButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                tbpnlView.setSelectedIndex(4);
+                tbpnlView.setSelectedIndex(5);
                 tbpnlInsert.setSelectedIndex(2);
             }
         });
+        libraryAddLibrary.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tbpnlView.setSelectedIndex(5);
+                tbpnlInsert.setSelectedIndex(4);
+            }
+        });
+
         btnAddBooklineCancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -182,6 +207,18 @@ public class libraryGUI extends JFrame {
                 addItemGenreCmb.setSelectedIndex(-1);
             }
         });
+
+        addLibraryCancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                tbpnlView.setSelectedIndex(4);
+                addLibraryIDText.setText("");
+                addLibraryNameText.setText("");
+                addLibraryAddressText.setText("");
+                addLibraryTelText.setText("");
+            }
+        });
+
         //TODO: ADD BOOKLINE
         btnAddBooklineBorrow.addActionListener(new ActionListener() {
             @Override
@@ -241,6 +278,13 @@ public class libraryGUI extends JFrame {
 
             }
         });
+        //TODO: ADD LIBRARY
+        addLibraryAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+            }
+        });
     }
 
     private void createTables() {
@@ -248,6 +292,7 @@ public class libraryGUI extends JFrame {
         Object[][] memberData = this.memberAPI.getMembersTable();
         Object[][] librarianData = this.librarianAPI.getLibrariansTable();
         Object[][] booklineData = this.booklineAPI.getBooklineTable();
+        Object[][] libraryData = this.libraryAPI.getLibrariesTable();
 
 
         memberTable.setModel(new DefaultTableModel(
@@ -267,6 +312,11 @@ public class libraryGUI extends JFrame {
 
         librarianTable.setModel(new DefaultTableModel(
                 librarianData,
+                new String[]{"ID","Name","Address","Tel"}
+        ));
+
+        libraryTable.setModel(new DefaultTableModel(
+                libraryData,
                 new String[]{"ID","Name","Address","Tel"}
         ));
     }
