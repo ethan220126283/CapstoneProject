@@ -105,6 +105,10 @@ public class libraryGUI extends JFrame {
     private JLabel addLibraryNameLabel;
     private JLabel addLibraryAddressLabel;
     private JLabel addLibraryTelLabel;
+    private JTextField addBooklineLibraryText;
+    private JTextField addBooklineItemText;
+    private JTextField addItemIDText;
+    private JTextField addItemGenreText;
 
     private MemberAPI memberAPI;
     private ItemAPI itemAPI;
@@ -295,9 +299,13 @@ public class libraryGUI extends JFrame {
                 int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to delete this Member?");
                 if (result == JOptionPane.YES_OPTION) {
                     int row = memberTable.getSelectedRow();
-                    String select = memberTable.getModel().getValueAt(row, 0).toString();
-                    memberAPI.deleteMemberById(select);
-                    createTables();
+                    if (row == -1 ) {
+                        JOptionPane.showMessageDialog(pnlMain,"Error: No Member is selected","Error",JOptionPane.ERROR_MESSAGE);
+                    }else {
+                        String select = memberTable.getModel().getValueAt(row, 0).toString();
+                        memberAPI.deleteMemberById(select);
+                        createTables();
+                    }
                 }
             }
         });
