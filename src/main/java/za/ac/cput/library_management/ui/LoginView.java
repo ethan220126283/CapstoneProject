@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-@Component
+//@Component
 public class LoginView implements ActionListener {
     private final JFrame mainFrame;
     private final JPanel pnlLeft, pnlRight;
@@ -95,8 +95,8 @@ public class LoginView implements ActionListener {
 
                     JOptionPane.showMessageDialog(mainFrame,"Logged in");
 
-                   libraryGUI libGui = new libraryGUI();
-                    libGui.setVisible(true);
+                   //libraryGUI libGui = new libraryGUI();
+                    //libGui.setVisible(true);
 
 
         }else{

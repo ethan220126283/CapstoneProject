@@ -268,7 +268,7 @@ public class libraryGUI extends JFrame {
                             booklineAPI.addBookline(bookline);
                             createTables();
 
-                            tbpnlView.setSelectedIndex(3);
+                            tbpnlView.setSelectedIndex(0);
                             addBooklineLibraryText.setText("");
                             addBooklineItemText.setText("");
                             txtAddBooklineMember.setText("");
@@ -309,7 +309,7 @@ public class libraryGUI extends JFrame {
                                     itemAPI.addItems(item);
                                        createTables();
 
-                                    tbpnlView.setSelectedIndex(3);
+                                    tbpnlView.setSelectedIndex(2);
                                     addItemIDText.setText("");
                                     addItemNameText.setText("");
                                     addItemGenreText.setText("");
@@ -407,7 +407,7 @@ public class libraryGUI extends JFrame {
                             librarianAPI.addLibrarian(librarian);
                             createTables();
 
-                            tbpnlView.setSelectedIndex(3);
+                            tbpnlView.setSelectedIndex(1);
                             addLibrarianIDText.setText("");
                             addLibrarianNameText.setText("");
                             addLibrarianAddressText.setText("");
