@@ -2,6 +2,7 @@ package za.ac.cput.library_management.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import za.ac.cput.library_management.domain.Item;
 import za.ac.cput.library_management.domain.Library;
 import za.ac.cput.library_management.factory.LibraryFactory;
 import za.ac.cput.library_management.service.impl.LibraryServiceImpl;
@@ -39,6 +40,10 @@ public class LibraryAPI {
     public void addLibrary(String id, String name, String address, String tel) {
         Library library = LibraryFactory.createLibrary(id, name, address, tel);
         libraryService.save(library);
+    }
+
+    public Library getLibraryById(String id){
+        return libraryService.read(id);
     }
 
     //Remove library from DB

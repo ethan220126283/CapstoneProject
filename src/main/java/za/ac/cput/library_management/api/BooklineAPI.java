@@ -88,7 +88,7 @@ public class BooklineAPI {
         return m;
     }
     //addBookline(Bookline bookline) //void
-    public void save(Bookline bookline) {
+    public void addBookline(Bookline bookline) {
         booklineService.save(bookline);
     }
 

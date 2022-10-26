@@ -48,8 +48,7 @@ public class ItemAPI {
         return itemService.read(id);
     }
 
-    public void addItems(String id, String name, String author, String genre, String status){
-        Item item = ItemFactory.createItem(id,name,author,genre,status);
+    public void addItems(Item item){
         itemService.save(item);
     }
 
@@ -63,7 +62,7 @@ public class ItemAPI {
     public Object[][] getItemsTable() {
 
         List<Item> items = getItem();
-        Object[][] objects = new Object[items.size()][4];
+        Object[][] objects = new Object[items.size()][5];
 
         for (int i = 0; i < items.size(); i++) {
             Item item = items.get(i);
