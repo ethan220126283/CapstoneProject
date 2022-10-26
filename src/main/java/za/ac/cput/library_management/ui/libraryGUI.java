@@ -10,6 +10,9 @@ import za.ac.cput.library_management.domain.Library;
 import za.ac.cput.library_management.domain.Member;
 import za.ac.cput.library_management.factory.BooklineFactory;
 import za.ac.cput.library_management.factory.ItemFactory;
+import za.ac.cput.library_management.domain.Librarian;
+import za.ac.cput.library_management.factory.LibrarianFactory;
+import za.ac.cput.library_management.factory.LibraryFactory;
 import za.ac.cput.library_management.factory.MemberFactory;
 
 import javax.swing.*;
@@ -276,7 +279,6 @@ public class libraryGUI extends JFrame {
             }
         });
 
-
                 //TODO: ADD ITEM
                 addItemAddButton.addActionListener(new ActionListener() {
                     @Override
@@ -357,22 +359,7 @@ public class libraryGUI extends JFrame {
                         }
                     }
                 });
-
-                //TODO: ADD LIBRARIAN
-                addLibrarianAddButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-
-                    }
-                });
-                //TODO: ADD LIBRARY
-                addLibraryAddButton.addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-
-                    }
-                });
-
+      
                 deleteMemberButton.addActionListener(new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
@@ -389,16 +376,111 @@ public class libraryGUI extends JFrame {
                         }
                     }
                 });
-        deleteLibrarianButton1.addActionListener(new ActionListener() {
+                
+        //TODO: ADD LIBRARIAN
+        addLibrarianAddButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (addLibrarianIDText.getText() == null
+                        || addLibrarianNameText.getText() == null
+                        || addLibrarianAddressText.getText() == null
+                        || addLibrarianTelText.getText() == null
+                        || Objects.equals(addLibrarianIDText.getText(), "")
+                        || Objects.equals(addLibrarianNameText.getText(), "")
+                        || Objects.equals(addLibrarianAddressText.getText(), "")
+                        || Objects.equals(addLibrarianTelText.getText(), "")
+                ) {
+                    JOptionPane.showMessageDialog(pnlMain,"Error:One or more fields are missing data.","Error",JOptionPane.ERROR_MESSAGE);
+                } else {
+                    int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to create this Librarian?");
+                    if (result == JOptionPane.YES_OPTION) {
+                        Librarian librarian = LibrarianFactory.createLibrarian(
+                                addLibrarianIDText.getText(),
+                                addLibrarianNameText.getText(),
+                                addLibrarianAddressText.getText(),
+                                addLibrarianTelText.getText(),
+                                null
+                        );
+                        if (librarian == null) {
+                            JOptionPane.showMessageDialog(pnlMain, "Error: Librarian entity was not created", "Error", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            librarianAPI.addLibrarian(librarian);
+                            createTables();
 
+                            tbpnlView.setSelectedIndex(3);
+                            addLibrarianIDText.setText("");
+                            addLibrarianNameText.setText("");
+                            addLibrarianAddressText.setText("");
+                            addLibrarianTelText.setText("");
+                        }
+                    }
+                }
+            }
+        });
+        
+        //TODO: ADD LIBRARY
+        addLibraryAddButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(addLibraryIDText.getText()== null ||addLibraryNameText.getText() == null || addLibraryAddressText.getText() == null || addLibraryTelText.getText() == null
+                  || Objects.equals(addLibraryIDText.getText(),"")
+                  || Objects.equals(addLibraryNameText.getText(),"")
+                  || Objects.equals(addLibraryAddressText.getText(),"")
+                  || Objects.equals(addLibraryTelText,"")  )
+                    {
+                    JOptionPane.showMessageDialog(pnlMain,"Error fields are missing data", "Error", JOptionPane.ERROR_MESSAGE);
+                }else {
+                    Library library = LibraryFactory.createLibrary(addLibraryIDText.getText(), addLibraryNameText.getText()
+                            ,addLibraryAddressText.getText(),addLibraryTelText.getText());
+                        if(library == null){
+                            JOptionPane.showMessageDialog(pnlMain,"Error fields are missing data", "Error", JOptionPane.ERROR_MESSAGE);
+                        }else {
+                            libraryAPI.addLibrary(library);
+                            createTables();
+                            tbpnlView.setSelectedIndex(4);
+                            addLibraryIDText.setText("");
+                            addLibraryNameText.setText("");
+                            addLibraryAddressText.setText("");
+                            addLibraryTelText.setText("");
+                        }
+                }
+
+            }
+  });
+
+        libraryDeleteLibrary.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(pnlMain,"Are you sure you want to delete this member?");
+                if(result == JOptionPane.YES_OPTION){
+                    int row = libraryTable.getSelectedRow();
+                    String select = libraryTable.getModel().getValueAt(row,0).toString();
+                    libraryAPI.deleteLibraryById(select);
+                    createTables();
+                }
             }
         });
         booklineReturn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
+            }
+        });
+
+        deleteLibrarianButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to delete this Librarian?");
+                if (result == JOptionPane.YES_OPTION) {
+                    int row = librarianTable.getSelectedRow();
+                    if (row == -1 ) {
+                        JOptionPane.showMessageDialog(pnlMain,"Error: No Librarian is selected","Error",JOptionPane.ERROR_MESSAGE);
+                    }else {
+                        String select = librarianTable.getModel().getValueAt(row, 0).toString();
+                        librarianAPI.deleteLibrarianById(select);
+                        createTables();
+                    }
+                }
             }
         });
     }
@@ -411,7 +493,7 @@ public class libraryGUI extends JFrame {
         Object[][] librarianData = this.librarianAPI.getLibrariansTable();
         Object[][] booklineData = this.booklineAPI.getBooklineTable();
         Object[][] libraryData = this.libraryAPI.getLibrariesTable();
-        //Object[][] itemData = this.itemAPI.getItemsTable();
+        Object[][] itemData = this.itemAPI.getItemsTable();
 
 
         memberTable.setModel(new DefaultTableModel(
@@ -420,7 +502,7 @@ public class libraryGUI extends JFrame {
         ));
 
         itemTable.setModel(new DefaultTableModel(
-                null,
+                itemData,
                 new String[]{"ID","Name","Author","Genre","Status"}
         ));
 
