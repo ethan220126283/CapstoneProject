@@ -250,24 +250,27 @@ public class libraryGUI extends JFrame {
                 ) {
                     JOptionPane.showMessageDialog(pnlMain,"Error:One or more fields are missing data.","Error",JOptionPane.ERROR_MESSAGE);
                 } else {
-                    Member member = MemberFactory.createMember(
-                            addMemberIDText.getText(),
-                            addMemberNameText.getText(),
-                            addMemberAddressText.getText(),
-                            addMemberTelText.getText(),
-                            "Active"
-                    );
-                    if (member == null) {
-                        JOptionPane.showMessageDialog(pnlMain,"Error: Member entity was not created","Error",JOptionPane.ERROR_MESSAGE);
-                    } else {
-                        memberAPI.addMember(member);
-                        createTables();
+                    int result = JOptionPane.showConfirmDialog(pnlMain, "Are you sure you wish to create this Member?");
+                    if (result == JOptionPane.YES_OPTION) {
+                        Member member = MemberFactory.createMember(
+                                addMemberIDText.getText(),
+                                addMemberNameText.getText(),
+                                addMemberAddressText.getText(),
+                                addMemberTelText.getText(),
+                                "Active"
+                        );
+                        if (member == null) {
+                            JOptionPane.showMessageDialog(pnlMain, "Error: Member entity was not created", "Error", JOptionPane.ERROR_MESSAGE);
+                        } else {
+                            memberAPI.addMember(member);
+                            createTables();
 
-                        tbpnlView.setSelectedIndex(3);
-                        addMemberIDText.setText("");
-                        addMemberNameText.setText("");
-                        addMemberAddressText.setText("");
-                        addMemberTelText.setText("");
+                            tbpnlView.setSelectedIndex(3);
+                            addMemberIDText.setText("");
+                            addMemberNameText.setText("");
+                            addMemberAddressText.setText("");
+                            addMemberTelText.setText("");
+                        }
                     }
                 }
             }
