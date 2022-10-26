@@ -6,6 +6,7 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.library_management.domain.Library;
+import za.ac.cput.library_management.factory.LibraryFactory;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,11 +17,13 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 class LibraryAPITest {
 
+
+    private Library library = LibraryFactory.createLibrary("CPT1","Cape Town Library","25 Belmont Road, Cape Town","0215978565");
     @Autowired LibraryAPI api;
 
     @Test
     void a_addLibrary() {
-        api.addLibrary("4", "Orange Road Library", "78 Orange Road", "021 854 9327");
+        api.addLibrary(library);
     }
 
     @Test
